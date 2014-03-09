@@ -1,0 +1,6 @@
+000100120625             strpgmexp  pgmlvl(*current)
+000101120625                export     symbol(CWRKLIST_prepareWorkList)
+000102120625                export     symbol(CWRKLIST_getNextListElement)
+000103120625                export     symbol(CWRKLIST_dropWorkList)
+000104120628                export     symbol(CWRKLIST_checkResultsConsistency)
+000105120625             endpgmexp

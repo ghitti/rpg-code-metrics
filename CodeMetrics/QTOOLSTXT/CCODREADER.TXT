@@ -1,0 +1,24 @@
+000100120518      /if not defined(CCODREADER)
+000101120518      /define CCODREADER
+000102120518
+000104120518     d CCODREADER_beginReading...
+000105120518     d                 pr
+000106120518
+000107120518     d CCODREADER_readNextLine...
+000108120518     d                 pr              n
+000109120518     d line                         255a
+000110120518
+000112120518     d CCODREADER_readPreviousLine...
+000113120518     d                 pr              n
+000114120518     d line                         255a
+000115120518
+000117120518     d CCODREADER_endReading...
+000118120518     d                 pr
+000119120518
+000120120518     d CCODREADER_readNextRealLine...
+000121120518     d                 pr           255a
+000124120518
+000125120518     d CCODREADER_readPreviousRealLine...
+000126120518     d                 pr           255a
+000127120518
+000128120518      /endif

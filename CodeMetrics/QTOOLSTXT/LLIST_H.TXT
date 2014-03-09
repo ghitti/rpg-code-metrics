@@ -1,0 +1,293 @@
+000100120420      /if not defined(LLIST)
+000101120420      /define LLIST
+000102120420
+000103120420      *------------------------------------------------------------------------
+000104120420      *
+000105120420      * Copyright (c) 2007-2011 Mihael Schmidt
+000106120420      * All rights reserved.
+000107120420      *
+000108120420      * This file is part of the LLIST service program.
+000109120420      *
+000110120420      * LLIST is free software: you can redistribute it and/or modify it under
+000111120420      * the terms of the GNU Lesser General Public License as published by
+000112120420      * the Free Software Foundation, either version 3 of the License, or
+000113120420      * any later version.
+000114120420      *
+000115120420      * LLIST is distributed in the hope that it will be useful,
+000116120420      * but WITHOUT ANY WARRANTY; without even the implied warranty of
+000117120420      * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+000118120420      * GNU Lesser General Public License for more details.
+000119120420      *
+000120120420      * You should have received a copy of the GNU Lesser General Public
+000121120420      * License along with LLIST.  If not, see http://www.gnu.org/licenses/.
+000122120420      *
+000123120420      *------------------------------------------------------------------------
+000124120420
+000125120420
+000126120420      *-------------------------------------------------------------------------
+000127120420      * Prototypes for Linked List
+000128120420      *-------------------------------------------------------------------------
+000129120420     D list_create     PR              *   extproc('list_create')
+000130120420      *
+000131120420     D list_dispose    PR                  extproc('list_dispose')
+000132120420     D   listPtr                       *
+000133120420      *
+000134120420     D list_add        PR              N   extproc('list_add')
+000135120420     D   listPtr                       *   const
+000136120420     D   ptrValue                      *   const
+000137120420     D   length                      10U 0 const
+000138120420     D   pos                         10U 0 const options(*nopass)
+000139120420      *
+000140120420     D list_addFirst   PR              N   extproc('list_addFirst')
+000141120420     D   listPtr                       *
+000142120420     D   valuePtr                      *   const
+000143120420     D   length                      10U 0 const
+000144120420      *
+000145120420     D list_addLast    PR              N   extproc('list_addLast')
+000146120420     D   listPtr                       *   const
+000147120420     D   valuePtr                      *   const
+000148120420     D   length                      10U 0 const
+000149120420      *
+000150120420     D list_addAll     PR              N   extproc('list_addAll')
+000151120420     D   listPtr                       *   const
+000152120420     D   srcListPtr                    *   const
+000153120420      *
+000154120420     D list_remove     PR              N   extproc('list_remove')
+000155120420     D   listPtr                       *   const
+000156120420     D   index                       10U 0 const
+000157120420      *
+000158120420     D list_removeFirst...
+000159120420     D                 PR              N   extproc('list_removeFirst')
+000160120420     D   listPtr                       *   const
+000161120420      *
+000162120420     D list_removeLast...
+000163120420     D                 PR              N   extproc('list_removeLast')
+000164120420     D   listPtr                       *   const
+000165120420      *
+000166120420     D list_clear      PR              N   extproc('list_clear')
+000167120420     D   listPtr                       *   const
+000168120420      *
+000169120420     D list_isEmpty    PR              N   extproc('list_isEmpty')
+000170120420     D   listPtr                       *   const
+000171120420      *
+000172120420     D list_replace    PR              N   extproc('list_replace')
+000173120420     D   listPtr                       *   const
+000174120420     D   ptrValue                      *   const
+000175120420     D   lengthValue                 10U 0 const
+000176120420     D   index                       10U 0 const
+000177120420      *
+000178120420     D list_get        PR              *   extproc('list_get')
+000179120420     D   listPtr                       *   const
+000180120420     D   index                       10U 0 const
+000181120420      *
+000182120420     D list_getFirst   PR              *   extproc('list_getFirst')
+000183120420     D   listPtr                       *   const
+000184120420      *
+000185120420     D list_getLast    PR              *   extproc('list_getLast')
+000186120420     D   listPtr                       *   const
+000187120420      *
+000188120420     D list_getNext    PR              *   extproc('list_getNext')
+000189120420     D   listPtr                       *   const
+000190120420      *
+000191120420     D list_iterate    PR              *   extproc('list_iterate')
+000192120420     D   listPtr                       *   const
+000193120420      *
+000194120420     D list_getPrev    PR              *   extproc('list_getPrev')
+000195120420     D   listPtr                       *   const
+000196120420      *
+000197120420     D list_abortIteration...
+000198120420     D                 PR                  extproc('list_abortIteration')
+000199120420     D   listPtr                       *   const
+000200120420      *
+000201120420     D list_resetIteration...
+000202120420     D                 PR                  extproc('list_resetIteration')
+000203120420     D   listPtr                       *   const
+000204120420      *
+000205120420     D list_contains   PR              N   extproc('list_contains')
+000206120420     D   listPtr                       *   const
+000207120420     D   valuePtr                      *   const
+000208120420     D   valueLength                 10U 0 const
+000209120420      *
+000210120420     D list_indexOf    PR            10I 0 extproc('list_indexOf')
+000211120420     D   listPtr                       *   const
+000212120420     D   valuePtr                      *   const
+000213120420     D   valueLength                 10U 0 const
+000214120420      *
+000215120420     D list_lastIndexOf...
+000216120420     D                 PR            10I 0 extproc('list_lastIndexOf')
+000217120420     D   listPtr                       *   const
+000218120420     D   valuePtr                      *   const
+000219120420     D   valueLength                 10U 0 const
+000220120420      *
+000221120420     D list_toCharArray...
+000222120420     D                 PR                  extproc('list_toCharArray')
+000223120420     D   listPtr                       *   const
+000224120420     D   arrayPtr                      *   const
+000225120420     D   count                       10U 0 const
+000226120420     D   length                      10U 0 const
+000227120420      *
+000228120420     D list_size       PR            10U 0 extproc('list_size')
+000229120420     D   listPtr                       *   const
+000230120420      *
+000231120420     D list_sublist    PR              *   extproc('list_sublist')
+000232120420     D   listPtr                       *   const
+000233120420     D   startIndex                  10U 0 const
+000234120420     D   length                      10U 0 const options(*nopass)
+000235120420      *
+000236120420     D list_rotate     PR                  extproc('list_rotate')
+000237120420     D   listPtr                       *   const
+000238120420     D   rotatePos                   10I 0 const
+000239120420      *
+000240120420     D list_swap       PR              N   extproc('list_swap')
+000241120420     D   listPtr                       *   const
+000242120420     D   itemPos1                    10U 0 const
+000243120420     D   itemPos2                    10U 0 const
+000244120420      *
+000245120420     D list_foreach...
+000246120420     D                 PR                  extproc('list_foreach')
+000247120420     D   listPtr                       *   const
+000248120420     D   procPtr                       *   const procptr
+000249120420     D   userData                      *   const options(*nopass)
+000250120420      *
+000251120420     D list_toString   PR         65535A   varying extproc('list_toString')
+000252120420     D   listPtr                       *   const
+000253120420     D   separator                    1A   const varying options(*omit:*nopass)
+000254120420     D   enclosing                  100A   const varying options(*nopass)
+000255120420     D   enclosingEnd               100A   const varying options(*nopass)
+000256120420      *
+000257120420     D list_split      PR              *   extproc('list_split') opdesc
+000258120420     D   string                   65535A   const options(*varsize)
+000259120420     D   separator                    1A   const options(*nopass)
+000260120420      *
+000261120420     D list_reverse    PR                  extproc('list_reverse')
+000262120420     D   listPtr                       *   const
+000263120420      *
+000264120420     D list_copy       PR              *   extproc('list_copy')
+000265120420     D   listPtr                       *   const
+000266120420      *
+000267120420     D list_frequency...
+000268120420     D                 PR            10U 0 extproc('list_frequency')
+000269120420     D   listPtr                       *   const
+000270120420     D   valuePtr                      *   const
+000271120420     D   valueLength                 10U 0 const
+000272120420      *
+000273120420     D list_addString...
+000274120420     D                 PR              N   extproc('list_addString') opdesc
+000275120420     D   listPtr                       *   const
+000276120420     D   value                    65535A   const options(*varsize)
+000277120420     D   index                       10U 0 const options(*nopass)
+000278120420      *
+000279120420     D list_addInteger...
+000280120420     D                 PR              N   extproc('list_addInteger')
+000281120420     D   listPtr                       *   const
+000282120420     D   value                       10I 0 const
+000283120420     D   index                       10U 0 const options(*nopass)
+000284120420      *
+000285120420     D list_addLong...
+000286120420     D                 PR              N   extproc('list_addLong')
+000287120420     D   listPtr                       *   const
+000288120420     D   value                       20I 0 const
+000289120420     D   index                       10U 0 const options(*nopass)
+000290120420      *
+000291120420     D list_addShort...
+000292120420     D                 PR              N   extproc('list_addShort')
+000293120420     D   listPtr                       *   const
+000294120420     D   value                        5I 0 const
+000295120420     D   index                       10U 0 const options(*nopass)
+000296120420      *
+000297120420     D list_addFloat...
+000298120420     D                 PR              N   extproc('list_addFloat')
+000299120420     D   listPtr                       *   const
+000300120420     D   value                        4F   const
+000301120420     D   index                       10U 0 const options(*nopass)
+000302120420      *
+000303120420     D list_addDouble...
+000304120420     D                 PR              N   extproc('list_addDouble')
+000305120420     D   listPtr                       *   const
+000306120420     D   value                        8F   const
+000307120420     D   index                       10U 0 const options(*nopass)
+000308120420      *
+000309120420     D list_addBoolean...
+000310120420     D                 PR              N   extproc('list_addBoolean')
+000311120420     D   listPtr                       *   const
+000312120420     D   value                         N   const
+000313120420     D   index                       10U 0 const options(*nopass)
+000314120420      *
+000315120420     D list_addDecimal...
+000316120420     D                 PR              N   extproc('list_addDecimal')
+000317120420     D   listPtr                       *   const
+000318120420     D   value                       15P 5 const
+000319120420     D   index                       10U 0 const options(*nopass)
+000320120420      *
+000321120420     D list_addDate...
+000322120420     D                 PR              N   extproc('list_addDate')
+000323120420     D   listPtr                       *   const
+000324120420     D   value                         D   const
+000325120420     D   index                       10U 0 const options(*nopass)
+000326120420      *
+000327120420     D list_getString...
+000328120420     D                 PR         65535A   extproc('list_getString')
+000329120420     D   listPtr                       *   const
+000330120420     D   index                       10U 0 const
+000331120420      *
+000332120420     D list_getInteger...
+000333120420     D                 PR            10I 0 extproc('list_getInteger')
+000334120420     D   listPtr                       *   const
+000335120420     D   index                       10U 0 const
+000336120420      *
+000337120420     D list_getShort...
+000338120420     D                 PR             5I 0 extproc('list_getShort')
+000339120420     D   listPtr                       *   const
+000340120420     D   index                       10U 0 const
+000341120420      *
+000342120420     D list_getLong...
+000343120420     D                 PR            20I 0 extproc('list_getLong')
+000344120420     D   listPtr                       *   const
+000345120420     D   index                       10U 0 const
+000346120420      *
+000347120420     D list_getFloat...
+000348120420     D                 PR             4F   extproc('list_getFloat')
+000349120420     D   listPtr                       *   const
+000350120420     D   index                       10U 0 const
+000351120420      *
+000352120420     D list_getDouble...
+000353120420     D                 PR             8F   extproc('list_getDouble')
+000354120420     D   listPtr                       *   const
+000355120420     D   index                       10U 0 const
+000356120420      *
+000357120420     D list_getBoolean...
+000358120420     D                 PR              N   extproc('list_getBoolean')
+000359120420     D   listPtr                       *   const
+000360120420     D   index                       10U 0 const
+000361120420      *
+000362120420     D list_getDecimal...
+000363120420     D                 PR            15P 5 extproc('list_getDecimal')
+000364120420     D   listPtr                       *   const
+000365120420     D   index                       10U 0 const
+000366120420      *
+000367120420     D list_getDate...
+000368120420     D                 PR              D   extproc('list_getDate')
+000369120420     D   listPtr                       *   const
+000370120420     D   index                       10U 0 const
+000371120420      *
+000372120420     D list_sort       PR                  extproc('list_sort')
+000373120420     D   listPtr                       *   const
+000374120420     D   sortAlgo                      *   const procptr
+000375120420      *
+000376120420     D list_removeRange...
+000377120420     D                 PR                  extproc('list_removeRange')
+000378120420     D   listPtr                       *   const
+000379120420     D   index                       10U 0 const
+000380120420     D   numberElements...
+000381120420     D                               10U 0 const
+000382120420      *
+000383120420     D list_merge...
+000384120420     D                 PR                  extproc('list_merge')
+000385120420     D   destList                      *   const
+000386120420     D   sourceList                    *   const
+000387120420     D   skipDuplicates...
+000388120420     D                                 N   const options(*nopass)
+000389120420
+000390120420      /endif
+000391120420
+000392120612      /include csystsrc/qsrctxt,llist_so_h

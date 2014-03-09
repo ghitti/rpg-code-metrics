@@ -1,0 +1,77 @@
+000100120629      /if not defined(CRPGPARUTL)
+000101120629      /define  CRPGPARUTL
+000102120629
+000103120630     d CRPGPARUTL_config...
+000104120630     d                 pr
+000105120630
+000106120630     d CRPGPARUTL_lineSubst...
+000107120630     d                 pr           255a   varying
+000108120630     d codeLine                     255a   const varying
+000109120630     d beginColumn                   10i 0 const
+000110120630     d endColumn                     10i 0 const
+000111120630     d maxColumn                     10i 0 const
+000112120630
+000113120630     d CRPGPARUTL_toUpper...
+000114120630     d                 pr         65535a   varying
+000115120630     d string                     65535a   const varying
+000116120630
+000117120630     d CRPGPARUTL_toLower...
+000118120630     d                 pr         65535a   varying
+000119120630     d string                     65535a   const varying
+000120120630
+000121120630     d CRPGPARUTL_checkDeprecated...
+000122120630     d                 pr              n
+000123120630     d operator                     255a   const varying
+000124120630
+000125120630     d CRPGPARUTL_getIndicatorsPattern...
+000126120630     d                 pr           100a
+000127120630
+000128120630     d CRPGPARUTL_getConfigFile...
+000129120630     d                 pr          2000a   varying
+000130120630
+000131120629     d CRPGPARUTL_isFullCommentLine...
+000132120629     d                 pr              n
+000133120629     d codeLine                     255a   const varying
+000134120629
+000135120629     d CRPGPARUTL_isBlankLine...
+000136120629     d                 pr              n
+000137120629     d codeLine                     255a   const varying
+000138120629
+000139120629     d CRPGPARUTL_isEndLineComment...
+000140120629     d                 pr              n
+000141120629     d codeLine                     255a   const varying
+000142120629     d commentStart                  10i 0 const
+000143120629     d commentEnd                    10i 0 const
+000144120629     d maxColumn                     10i 0 const
+000145120629
+000146120630     d CRPGPARUTL_checkConditionalIndicators...
+000148120630     d                 pr
+000149120630     d codeLine                     255a   const varying
+000150120630     d columnFrom                    10i 0 const
+000151120630     d columnTo                      10i 0 const
+000152120630     d maxColumn                     10i 0 const
+000153120630
+000154120630     d CRPGPARUTL_checkInLineDeclaration...
+000156120630     d                 pr
+000157120630     d codeLine                     255a   const varying
+000158120630     d resultFrom                    10i 0 const
+000159120630     d resultTo                      10i 0 const
+000160120630     d lengthFrom                    10i 0 const
+000161120630     d decimalTo                     10i 0 const
+000162120630     d maxColumn                     10i 0 const
+000163120630
+000164120630     d CRPGPARUTL_checkResultingIndicators...
+000166120630     d                 pr
+000167120630     d codeLine                     255a   const varying
+000168120630     d columnFrom                    10i 0 const
+000169120630     d columnTo                      10i 0 const
+000170120630     d maxColumns                    10i 0 const
+000171120630
+000172120630     d CRPGPARUTL_checkVariableIndicators...
+000174120630     d                 pr
+000175120630     d codeLine                     255a   const varying
+000176120630     d columnFrom                    10i 0 const
+000177120630     d columnTo                      10i 0 const
+000178120630     d maxColumn                     10i 0 const
+000180120630
+000181120629      /endif

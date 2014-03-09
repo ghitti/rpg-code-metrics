@@ -1,0 +1,11 @@
+000100120525      /if not defined(CRPG4PARSR)
+000101120525      /define CRPG4PARSR
+000102120525
+000103120525     d CRPG4PARSR_createParser...
+000104120525     d                 pr
+000105120525
+000106120525     d CRPG4PARSR_parseLine...
+000108120525     d                 pr
+000109120525     d codeLine                     255a   varying
+000110120525
+000111120525      /endif

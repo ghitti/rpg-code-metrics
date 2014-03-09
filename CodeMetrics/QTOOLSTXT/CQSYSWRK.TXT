@@ -1,0 +1,61 @@
+000100120612      /if not defined(CQSYSWRK)
+000101120612      /define CQSYSWRK
+000102120612
+000103120614      ///////////////////////////////////////////////////
+000104120614      // Type definition
+000105120614      ///////////////////////////////////////////////////
+000106120614
+000107120612     d QSYSObject_Type...
+000108120612     d                 ds                  qualified based(@dummy)
+000109120612     d  name                         10a   varying
+000110120612     d  library                      10a   varying
+000111120612     d  type                         10a   varying
+000112120612
+000113120613     d QSYSFile_Type...
+000114120613     d                 ds                  qualified based(@dummy)
+000115120613     d  name                         10a   varying
+000116120613     d  library                      10a   varying
+000117120613     d  type                         10a   varying
+000118120613     d  Attribute                    10a
+000119120613     d  ChangDateTime                  z
+000120120613
+000121120614     d QSYSMember_Type...
+000122120614     d                 ds                  qualified based(@dummy)
+000123120614     d library                       10a   varying
+000124120614     d fileName                      10a   varying
+000125120614     d memberName                    10a   varying
+000126120614     d memberType                    10a   varying
+000127120614     d changeDateTime                  z
+000128120616     d isSourceFile                    n
+000129120829     d creationDate                    d
+000130120614
+000131120614      ///////////////////////////////////////////////////
+000132120614      // Exported prototypes
+000133120614      ///////////////////////////////////////////////////
+000134120614
+000135120612     d CQSYSWRK_getAllObjects...
+000136120612     d                 pr              *
+000137120612     d   ObjectName                  10a   Const
+000138120612     d   LibraryName                 10a   Const
+000139120612     d   ObjectType                  10a   Const
+000140120612
+000141120613     d CQSYSWRK_getAllSourceFiles...
+000142120613     d                 pr              *
+000143120613     d LibraryName                   10a   Const
+000144120613
+000145120614     d CQSYSWRK_getAllMembers...
+000146120614     d                 pr              *
+000147120614     d file                          10a   const
+000148120614     d library                       10a   const
+000149120614
+000155120616     d CQSYSWRK_getMemberInfo...
+000156120616     d                 pr                  likeds(QSYSMember_Type)
+000157120616     d library                       10a   const
+000158120616     d file                          10a   const
+000159120616     d member                        10a   const
+000160120616
+000161120625     d CQSYSWRK_convertDate...
+000162120625     d                 pr              z
+000163120625     d inputDate                     13a   const
+000164120625
+000165120612      /endif

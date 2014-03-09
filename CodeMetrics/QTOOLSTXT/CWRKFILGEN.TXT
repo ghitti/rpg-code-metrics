@@ -1,0 +1,18 @@
+000100120521      /if not defined(CWRKFILGEN)
+000101120521      /define CWRKFILGEN
+000102120511
+000103120813     d WORK_FILE       c                   const('QINPUTSRC')
+000104120813     d WORK_LIB        c                   const('QTEMP')
+000105120813
+000106120521     d CWRKFILGEN_createWorkFile...
+000107120514     d                 pr
+000108120511     d sourceLibrary                 10a   const varying
+000109120511     d sourceFile                    10a   const varying
+000110120511     d sourceMember                  10a   const varying
+000111120521
+000112120521     d CWRKFILGEN_deleteWorkFile...
+000113120521     d                 pr
+000114120625     d library                       10a   const varying
+000115120625     d file                          10a   const varying
+000116120521
+000117120511      /endif

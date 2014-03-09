@@ -1,0 +1,118 @@
+000100120528      /if not defined(CCODSTATS)
+000101120528      /define CCODSTATS
+000102120528
+000141120626      ////////////////////////////////////////////////////////////////
+000142120626      // Prototype declaration
+000143120626      ////////////////////////////////////////////////////////////////
+000144120626
+000145120528     d CCODSTATS_clear...
+000146120528     d                 pr
+000147120528
+000148120528     d CCODSTATS_addTotalLines...
+000149120528     d                 pr
+000150120528
+000151120528     d CCODSTATS_addCommentsCount...
+000152120528     d                 pr
+000153120528
+000154120528     d CCODSTATS_addBlankLines...
+000155120528     d                 pr
+000156120528
+000157120528     d CCODSTATS_addLineCount...
+000158120528     d                 pr
+000159120528     d lineType                       5a   const
+000160120528
+000161120528     d CCODSTATS_addUnknownLines...
+000162120528     d                 pr
+000163120528
+000164120529     d CCODSTATS_addDeprecatedOperator...
+000165120529     d                 pr
+000166120529     d operator                     255a   const varying
+000167120529
+000172120530     d CCODSTATS_countDeprecatedOperators...
+000173120530     d                 pr            10i 0
+000174120529
+000175120814     d CCODSTATS_deleteAllStatistics...
+000176120623     d                 pr
+000177120814
+000178120814     d CCODSTATS_deleteStatistics...
+000179120814     d                 pr
+000182120814     d libraryName                   10a   const varying
+000183120814     d fileName                      10a   const varying
+000184120814     d memberName                    10a   const varying
+000185120623
+000186120611     d CCODSTATS_writeStatistics...
+000187120611     d                 pr
+000188120611     d memberName                    10a   const varying
+000189120611     d fileName                      10a   const varying
+000190120611     d libraryName                   10a   const varying
+000191120611     d memberType                    10a   const varying
+000192120611
+000193120623     d CCODSTATS_getMetricGenerationDateTime...
+000194120623     d                 pr              n
+000195120623     d libraryName                   10a   const varying
+000196120623     d fileName                      10a   const varying
+000197120623     d memberName                    10a   const varying
+000198120623     d generationDateTime...
+000199120623     d                                 z
+000200120623
+000201120530     d CCODSTATS_addValidOperator...
+000202120530     d                 pr
+000203120530
+000204120531     d CCODSTATS_addResultingIndicator...
+000205120531     d                 pr
+000206120531
+000207120601     d CCODSTATS_addIndicatorAsVariable...
+000208120601     d                 pr
+000209120601
+000210120528     d CCODSTATS_getTotalLines...
+000211120528     d                 pr            10i 0
+000212120528
+000213120528     d CCODSTATS_getCommentsCount...
+000214120528     d                 pr            10i 0
+000215120528
+000216120528     d CCODSTATS_getBlankLinesCount...
+000217120528     d                 pr            10i 0
+000218120528
+000235120528     d CCODSTATS_getFreeLineCount...
+000236120528     d                 pr            10i 0
+000237120528
+000241120528     d CCODSTATS_getUnknownLineCount...
+000242120528     d                 pr            10i 0
+000243120528
+000244120529     d CCODSTATS_getDeprecatedOperators...
+000245120529     d                 pr              *
+000246120531
+000247120531     d CCODSTATS_getValidOperators...
+000248120531     d                 pr            10i 0
+000249120531
+000250120531     d CCODSTATS_addInLineDeclaration...
+000251120531     d                 pr
+000252120531
+000253120531     d CCODSTATS_getInlineDeclarations...
+000254120531     d                 pr            10i 0
+000255120531
+000256120531     d CCODSTATS_addConditionalIndicator...
+000257120531     d                 pr
+000258120531
+000259120531     d CCODSTATS_getConditionalIndicators...
+000260120531     d                 pr            10i 0
+000261120531
+000262120531     d CCODSTATS_getResultingIndicators...
+000263120531     d                 pr            10i 0
+000264120531
+000265120601     d CCODSTATS_getIndicatorsAsVariables...
+000266120601     d                 pr            10i 0
+000267120601
+000268120829     d CCODSTATS_getLastModificationDate...
+000270120829     d                 pr              z
+000271120829
+000272120829     d CCODSTATS_setLastModificationDate...
+000274120829     d                 pr
+000275120829     d modificationDateTime...
+000276120829     d                                 z   const
+000277120829
+000278120829     d CCODSTATS_setMemberCreationDate...
+000280120829     d                 pr
+000281120829     d creationDate                    d   const
+000282120829
+000283120528      /endif

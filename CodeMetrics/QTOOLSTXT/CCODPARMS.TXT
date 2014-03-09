@@ -1,0 +1,32 @@
+000100120624      /if not defined(CCODPARMS)
+000101120624      /define CCODPARMS
+000102120624
+000103120624     d CCODPARMS_getLibrary...
+000105120624     d                 pr            10a
+000106120624
+000107120624     d CCODPARMS_getFile...
+000110120624     d                 pr            10a
+000111120624
+000112120624     d CCODPARMS_getMember...
+000113120624     d                 pr            10a
+000114120624
+000115120624     d CCODPARMS_getOption...
+000116120624     d                 pr            20a
+000117120624
+000118120624     d CCODPARMS_setLibrary...
+000120120624     d                 pr
+000121120624     d library                       10a   const
+000122120624
+000123120624     d CCODPARMS_setFile...
+000124120624     d                 pr
+000125120624     d file                          10a   const
+000126120624
+000127120624     d CCODPARMS_setMember...
+000128120624     d                 pr
+000129120624     d member                        10a   const
+000130120624
+000131120809     d CCODPARMS_setOption...
+000132120624     d                 pr
+000133120624     d option                        20a   const
+000134120624
+000153120809      /endif

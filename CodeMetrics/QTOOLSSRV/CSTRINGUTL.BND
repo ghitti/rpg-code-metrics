@@ -1,0 +1,3 @@
+000100120628             strpgmexp  pgmlvl(*current) signature('CSTRINGUTL 1.0.0')
+000101120628                export     symbol(CSTRINGUTL_parse)
+000114120628             endpgmexp
