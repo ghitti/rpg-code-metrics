@@ -1,0 +1,32 @@
+000100120623      /if not defined(CWRKLIST)
+000101120623      /define CWRKLIST
+000102120623
+000103120625     d WorkNode        ds                  qualified based(@dummy)
+000104120625     d  library                      10a
+000105120625     d  file                         10a
+000106120625     d  member                       10a
+000107120625     d  type                         10a
+000108120625     d  changeDate                    6a
+000109120625     d  changeTime                    6a
+000111120625
+000112120623     d CWRKLIST_prepareWorkList...
+000113120627     d                 pr            10i 0
+000114120625     d library                       10a   const
+000115120625     d file                          10a   const
+000116120625     d member                        10a   const
+000117120625     d statement       s          10000a   varying
+000118120623
+000119120625     d CWRKLIST_getNextListElement...
+000120120625     d                 pr              n
+000121120625     d element                             likeds(QSYSMember_Type)
+000122120625
+000123120625     d CWRKLIST_dropWorkList...
+000124120625     d                 pr
+000125120625
+000126120628     d CWRKLIST_checkResultsConsistency...
+000127120628     d                 pr
+000128120628     d library                       10a   const
+000129120628     d file                          10a   const
+000130120628     d member                        10a   const
+000131120628
+000132120623      /endif

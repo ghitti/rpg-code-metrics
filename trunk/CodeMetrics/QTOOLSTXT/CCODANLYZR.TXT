@@ -1,0 +1,15 @@
+000100120522      /if not defined(CCODANLYZR)
+000101120522      /define CCODANLYZR
+000102120522
+000103120524     d CCODANLYZR_config...
+000105120524     d                 pr
+000106120524     d memberType                    10a   varying const
+000107120524
+000108120522     d CCODANLYZR_parseLine...
+000109120522     d                 pr
+000110120522     d codeLine                     255a   const varying
+000111120522
+000112120524     d CCODANLYZR_clearAnalysis...
+000113120524     d                 pr
+000114120523
+000122120524      /endif                                                                           .,

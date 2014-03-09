@@ -1,0 +1,202 @@
+000100120612      /if not defined(CQSYSWRTYP)
+000101120612      /define CQSYSWRTYP
+000102120613
+000103120614      ///////////////////////////////////////////////////
+000104120614      // API prototype declaration
+000105120614      ///////////////////////////////////////////////////
+000106120614
+000107120613     d API_RetrieveMemberDescription...
+000108120613     d                 pr                  extpgm('QUSRMBRD')
+000109120614     d RcvVar                     32765a   options(*varsize)
+000110120613     d LenRcvVar                     10i 0 const
+000111120613     d Format                         8a   const
+000112120613     d QualFileName                  20a   const
+000113120613     d MbrName                       10a   const
+000114120613     d Overrides                      1a   const
+000115120613     d errorCode                           likeds(ApiError)
+000116120613
+000117120613     d API_RetrieveFileDescription...
+000118120613     d                 pr                  extpgm('QDBRTVFD')
+000119120614     d  szRtnBufrer               32765a   options(*varsize)
+000120120614     d  nBuffLen                     10i 0 const
+000121120614     d  rtnFileName                  20a
+000122120614     d  szAPIFmt                      8a   const
+000123120614     d  szQualFile                   20a   const
+000124120614     d  szRcdFmt                     10a   const
+000125120614     d  bOverride                     1a   const
+000126120614     d  szRmtLocSys                  10a   const
+000127120614     d  szIntFileType                10a   const
+000128120613     d ErrorCode                           likeds(ApiError)
+000129120613
+000131120612     d API_ListObjects...
+000132120614     d                 pr                  extpgm('QUSLOBJ')
+000133120614     d  UserSpace                    20a   const
+000134120614     d  Format                        8a   const
+000135120614     d  ObjectNameLib                20a   const
+000136120614     d  ObjectType                   10a   const
+000137120614     d  ErrorCode                          likeds(ApiError)
+000138120612
+000139120612     d API_ListMembers...
+000140120614     d                 pr                  extpgm('QUSLMBR')
+000141120614     d  UserSpace                    20a   const
+000142120614     d  Format                        8a   const
+000143120614     d  ObjectNameLib                20a   const
+000144120614     d  Member                       10a   const
+000145120614     d  Override                      1a   const
+000146120614     d  ErrorCode                          likeds(ApiError)
+000147120612
+000148120614      ///////////////////////////////////////////////////
+000149120614      // API-related types
+000150120614      ///////////////////////////////////////////////////
+000151120614
+000152120614     /**
+000153120614      * Structure used for member related data. Used by the API QUSRMBRD
+000154120614      */
+000155120613     d MBRD0100        ds
+000156120613     d  bytesRetorned                10i 0
+000157120613     d  bytesAvailable...
+000158120613     d                               10i 0
+000159120613     d  fileName                     10a
+000160120613     d  libraryName                  10a
+000161120613     d  memberName                   10a
+000162120613     d  fileAttribute                10a
+000163120613     d  sourceType                   10a
+000164120613     d  creationDate                 13a
+000165120613     d  lastChange                   13a
+000166120613     d  description                  50a
+000167120613     d  sourceFile                    1a
+000168120613
+000169120614     /**
+000170120614      * Format OBJL0100 for object data. Used by the API QUSLOBJ
+000171120614      */
+000172120612     d OBJL0100        ds                           Qualified Inz
+000173120612     d  ObjectNameUsed...
+000174120612     d                               10a
+000175120612     d  LibraryUsed                  10a
+000176120612     d  TypeUsed                     10a
+000177120612
+000178120614     /**
+000179120614      * Format OBJL0200 for object data. Used by the API QUSLOBJ
+000180120614      */
+000182120612     d OBJL0200        ds                           Qualified Inz
+000183120612     d  ObjectNameUsed...
+000184120612     d                               10a
+000185120612     d  LibraryUsed                  10a
+000186120612     d  TypeUsed                     10a
+000187120612     d  InformationStatus...
+000188120612     d                                1a
+000189120612     d  ExtendedObjectAttribute...
+000190120612     d                               10a
+000191120612     d  TextDescription...
+000192120612     d                               50a
+000193120612     d  UserDefinedAttribute...
+000194120612     d                               10a
+000195120612     d  Reserved                      7a
+000196120612
+000197120614     /**
+000198120614      * Format OBJL0300 for object data. Used by the API QUSLOBJ
+000199120614      */
+000200120612     d OBJL0300        ds                           Qualified based(dummyPtr)
+000201120612     d  ObjectNameUsed...
+000202120612     d                               10a
+000203120612     d  LibraryUsed                  10a
+000204120612     d  TypeUsed                     10a
+000205120612     d  InformationStatus...
+000206120612     d                                1a
+000207120612     d  ExtendedObjectAttribute...
+000208120612     d                               10a
+000209120612     d  TextDescription...
+000210120612     d                               50a
+000211120612     d  UserDefinedAttribute...
+000212120612     d                               10a
+000213120612     d  Reserved                      7a
+000214120612     d  Asp                          10i 0
+000215120612     d  ObjectOwner                  10a
+000216120612     d  ObjectDomain                 10a
+000217120612     d  CreationDateTime...
+000218120612     d                                8a
+000219120612     d  ChangeDateTime...
+000220120612     d                                8a
+000221120612     d  Storage                      10a
+000222120612     d  CompressStatus...
+000223120612     d                                1a
+000224120612     d  AllowChange                   1a
+000225120612     d  ChangedByProgram...
+000226120612     d                                1a
+000227120612     d  ObjectAudit                   1a
+000228120612     d  DigitallySigned...
+000229120612     d                                1a
+000230120612     d  DigitallySignedMultiple...
+000231120612     d                                1a
+000232120612     d  Reserved2                     2a
+000233120612     d  LibraryAsp                   10i 0
+000234120612
+000235120614     /**
+000236120614      * Header of the retrieved list of QSYS Objects
+000237120614      */
+000248120614     d ObjectListHeaderDS...
+000249120614     d                 ds                   qualified based(dummyptr)
+000250120612     d  UserArea                     64a
+000251120612     d  GenericHeaderSize...
+000252120612     d                               10i 0
+000253120612     d  ReleaseLevel...
+000254120612     d                                4a
+000255120612     d  FormatName                    8a
+000256120612     d  ApiName                      10a
+000257120612     d  DateTime                     13a
+000258120612     d  CompletionStatus...
+000259120612     d                                1a
+000260120612     d  SpaceUsed                    10i 0
+000261120612     d  InputOffset...
+000262120612     d                               10i 0
+000263120612     d  InputSize                    10i 0
+000264120612     d  HeaderOffset...
+000265120612     d                               10i 0
+000266120612     d  HeaderSize                   10i 0
+000267120612     d  ListOffset                   10i 0
+000268120612     d  ListSize                     10i 0
+000269120612     d  ListCount                    10i 0
+000270120612     d  EntrySize                    10i 0
+000271120612     d  CCSID                        10i 0
+000272120612     d  CountryID                     2a
+000273120612     d  LanguageID                    3a
+000274120612     d  Subset                        1a
+000275120612     d  Reserved                     42a
+000277120614
+000278120614     /**
+000279120614      * Header of the retrieved list of members
+000280120614      */
+000281120614     d MemberListHeaderDS...
+000282120614     d                 ds                  qualified based(@dummy)
+000283120614     d fileName                      10a
+000284120614     d libraryName                   10a
+000285120614     d fileAttribute                 10a
+000286120614     d fileTextDesc                  50a
+000287120614     d MemberCount                   10i 0
+000288120614     d SourceFile                     1a
+000289120614     d Reserved                       3a
+000290120614     d descCCSID                     10i 0
+000291120614
+000292120614     /**
+000293120614      * Structure used for member data
+000294120614      */
+000295120614     d MBRL0200        ds                  qualified based(@dummy)
+000296120614     d memberName                    10a
+000297120614     d sourceType                    10a
+000298120614     d createDate                    13a
+000299120614     d changeDate                    13a
+000300120614     d description                   50a
+000301120614     d descripCCSID                  10i 0
+000302120614
+000303120614     /**
+000304120614      * Structure used for API errors
+000305120614      */
+000306120614     d ApiError        ds                  inz qualified
+000307120614     d Bytes                         10i 0 inz( %Size( ApiError ))
+000308120614     d BytesAvailable...
+000309120614     d                               10i 0
+000310120614     d ErrorID                        7a   inz
+000311120614     d Reserved                       1a   inz( x'00' )
+000312120614     d MessageData                  128a   inz
+000313120614
+000335120612      /endif

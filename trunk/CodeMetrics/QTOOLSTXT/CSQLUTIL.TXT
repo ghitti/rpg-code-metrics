@@ -1,0 +1,10 @@
+000100120518
+000101120518      /if not defined(CSQLUTIL)
+000102120518      /define CSQLUTIL
+000103120518
+000104120518     d CSQLUTIL_checkSQLState...
+000105120518     d                 pr              n
+000106120518     d StateCode                      5a   const
+000107120518     d Area                          50a   const
+000108120518
+000109120518      /endif

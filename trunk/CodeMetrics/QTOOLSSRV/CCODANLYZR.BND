@@ -1,0 +1,9 @@
+000100120521        strpgmexp pgmlvl(*current)
+000101120521                export symbol(CCODREADER_beginReading)
+000102120521                export symbol(CCODREADER_readNextLine)
+000103120521                export symbol(CCODREADER_readPreviousLine)
+000104120521                export symbol(CCODREADER_endReading)
+000105120522                export symbol(CCODANLYZR_parseLine)
+000106120523                export symbol(CCODANLYZR_clearAnalysis)
+000108120524                export symbol(CCODANLYZR_config)
+000109120521        endpgmexp

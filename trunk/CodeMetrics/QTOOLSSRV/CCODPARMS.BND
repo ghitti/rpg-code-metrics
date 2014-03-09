@@ -1,0 +1,10 @@
+000100120624             strpgmexp  pgmlvl(*current)
+000101120624                export     symbol(CCODPARMS_getLibrary)
+000102120624                export     symbol(CCODPARMS_getFile)
+000103120624                export     symbol(CCODPARMS_getMember)
+000104120624                export     symbol(CCODPARMS_getOption)
+000105120624                export     symbol(CCODPARMS_setLibrary)
+000106120624                export     symbol(CCODPARMS_setFile)
+000107120624                export     symbol(CCODPARMS_setMember)
+000108120624                export     symbol(CCODPARMS_setOption)
+000113120624             endpgmexp

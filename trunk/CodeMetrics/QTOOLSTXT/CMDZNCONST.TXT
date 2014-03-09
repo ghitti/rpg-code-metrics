@@ -1,0 +1,99 @@
+000100120511      /if not defined(MDZNCONST)
+000101120511      /define MDZNCONST
+000102120511
+000103120614      /////////////////////////////////////////////////////////////////////////
+000104120614      // Message-related constants
+000105120614      /////////////////////////////////////////////////////////////////////////
+000106120614
+000107120511     d MDZN_MESSAGE_FILE...
+000108120511     d                 c                   const('MDZNMSGF')
+000109120514     d INVALID_PARAMETERS...
+000110120514     d                 c                   const('MDZ0001')
+000111120514     d COULD_NOT_CREATE_WORK_FILE...
+000112120514     d                 c                   const('MDZ0002')
+000113120514     d COULD_NOT_CREATE_MEMBER...
+000114120514     d                 c                   const('MDZ0003')
+000115120514     d COULD_NOT_COPY_TO_WORKFILE...
+000116120514     d                 c                   const('MDZ0004')
+000117120518     d COULD_NOT_READ_CODE_FILE...
+000118120518     d                 c                   const('MDZ0005')
+000119120524     d UNSUPPORTED_MEMBER_TYPE...
+000120120524     d                 c                   const('MDZ0006')
+000121120524     d COULD_NOT_CONFIG_ANALIZER...
+000122120524     d                 c                   const('MDZ0007')
+000123120528     d ANALIZER_NOT_SET...
+000124120528     d                 c                   const('MDZ0008')
+000125120530     d ERROR_REGISTERING_DEPRECATED...
+000126120530     d                 c                   const('MDZ0009')
+000129120614     d UNSUPPORTED_OPTION...
+000130120614     d                 c                   const('MDZ0011')
+000131120616     d ERROR_RETRIEVING_MEMBERINFO...
+000132120616     d                 c                   const('MDZ0012')
+000133120625     d ERROR_GENERATING_WRKLIST...
+000134120625     d                 c                   const('MDZ0013')
+000135120630     d ERROR_READING_CONFIG...
+000136120630     d                 c                   const('MDZ0014')
+000137120630     d ERROR_CREATING_PARSER...
+000138120630     d                 c                   const('MDZ0015')
+000139120614
+000140120614      /////////////////////////////////////////////////////////////////////////
+000141120614      // Specification types
+000142120614      /////////////////////////////////////////////////////////////////////////
+000143120614
+000144120809     d CSPEC           c                   const('C')
+000145120809     d DSPEC           c                   const('D')
+000146120809     d ESPEC           c                   const('E')
+000147120809     d FSPEC           c                   const('F')
+000148120809     d HSPEC           c                   const('H')
+000149120809     d ISPEC           c                   const('I')
+000150120809     d OSPEC           c                   const('O')
+000151120809     d LSPEC           c                   const('L')
+000152120809     d PSPEC           c                   const('P')
+000153120809     d FREE_LINE       c                   const('FREE')
+000154120614
+000155120528     d OLD_COMMENT_SYMBOL...
+000156120528     d                 c                   const('*')
+000157120813     d FREE_COMMENT_SYMBOL...
+000158120813     d                 c                   const('//')
+000159120529     d ALL_LINE_COMMENT...
+000160120529     d                 c                   const(7)
+000161120529     d SPEC_COLUMN     c                   const(6)
+000162120614     d
+000163120614
+000164120614      /////////////////////////////////////////////////////////////////////////
+000165120614      // Other constants
+000166120614      /////////////////////////////////////////////////////////////////////////
+000167120614
+000168120530     d XML_INTO_CONFIG...
+000169120530     d                 c                   const('allowextra=yes  +
+000170120530     d                                     allowmissing=yes       +
+000171120530     d                                     case=any')
+000172120614     d ALL             c                   const('*ALL')
+000173120616     d FIRST           c                   const('*FIRST')
+000174120530
+000175120614      /////////////////////////////////////////////////////////////////////////
+000176120614      // Supported member types
+000177120614      /////////////////////////////////////////////////////////////////////////
+000178120614
+000179120607     d RPT_MEMBER_TYPE...
+000180120607     d                 c                   const('RPT')
+000181120630
+000182120630     d RPG_MEMBER_TYPE...
+000183120630     d                 c                   const('RPG')
+000184120630
+000185120607     d RPGILE_MEMBER_TYPE...
+000186120808     d                 c                   const('RPGLE')
+000193120808
+000194120808     d SQLRPGILE_MEMBER_TYPE...
+000196120808     d                 c                   const('SQLRPGLE')
+000197120808
+000198120607
+000199120614      /////////////////////////////////////////////////////////////////////////
+000200120614      // Supported options
+000201120614      /////////////////////////////////////////////////////////////////////////
+000202120614
+000203120614     d OPTION_REPLACE  c                   const('*REPLACE')
+000204120614
+000205120614     d OPTION_UPDATE   c                   const('*UPDATE')
+000206120614
+000207120511      /endif

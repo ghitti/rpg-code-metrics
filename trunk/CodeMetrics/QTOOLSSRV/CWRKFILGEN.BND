@@ -1,0 +1,4 @@
+000100120516        strpgmexp pgmlvl(*current)
+000101120521                export symbol(CWRKFILGEN_createWorkFile)
+000102120521                export symbol(CWRKFILGEN_deleteWorkFile)
+000104120516        endpgmexp

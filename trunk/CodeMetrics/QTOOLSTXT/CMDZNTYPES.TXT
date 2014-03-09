@@ -1,0 +1,9 @@
+000100120525      /if not defined(CMDZNTYPES)
+000101120525      /define CMDZNTYPES
+000102120525
+000103120525     d columnPositions...
+000104120525     d                 ds                  qualified based(@nullPtr)
+000105120525     d  from                         10i 0
+000106120525     d  to                           10i 0
+000107120525
+000108120525      /endif
