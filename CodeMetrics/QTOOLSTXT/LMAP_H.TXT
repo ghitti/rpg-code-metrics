@@ -1,0 +1,204 @@
+000000120529      /if not defined(LMAP)
+000000120529      /define LMAP
+000000120529
+000000120529      *-------------------------------------------------------------------------
+000000120529      * Prototypes
+000000120529      *-------------------------------------------------------------------------
+000000120529     D lmap_create     PR              *   extproc('lmap_create')
+000000120529      *
+000000120529     D lmap_dispose    PR                  extproc('lmap_dispose')
+000000120529     D   mapPtr                        *
+000000120529      *
+000000120529     D lmap_add        PR                  extproc('lmap_add')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   valuePtr                      *   const
+000000120529     D   valueLength                 10U 0 const
+000000120529      *
+000000120529     D lmap_addInteger...
+000000120529     D                 PR                  extproc('lmap_addInteger')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                       10I 0 const
+000000120529      *
+000000120529     D lmap_addString...
+000000120529     D                 PR                  extproc('lmap_addString')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                    65535A   const varying
+000000120529      *
+000000120529     D lmap_addLong...
+000000120529     D                 PR                  extproc('lmap_addLong')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                       20I 0 const
+000000120529      *
+000000120529     D lmap_addFloat...
+000000120529     D                 PR                  extproc('lmap_addFloat')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                        4F   const
+000000120529      *
+000000120529     D lmap_addDouble...
+000000120529     D                 PR                  extproc('lmap_addDouble')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                        8F   const
+000000120529      *
+000000120529     D lmap_addDecimal...
+000000120529     D                 PR                  extproc('lmap_addDecimal')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                       15P 5 const
+000000120529      *
+000000120529     D lmap_addDate...
+000000120529     D                 PR                  extproc('lmap_addDate')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                         D   const
+000000120529      *
+000000120529     D lmap_addTime...
+000000120529     D                 PR                  extproc('lmap_addTime')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                         T   const
+000000120529      *
+000000120529     D lmap_addTimestamp...
+000000120529     D                 PR                  extproc('lmap_addTimestamp')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                         Z   const
+000000120529      *
+000000120529     D lmap_addShort...
+000000120529     D                 PR                  extproc('lmap_addShort')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                        5I 0 const
+000000120529      *
+000000120529     D lmap_addBoolean...
+000000120529     D                 PR                  extproc('lmap_addBoolean')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529     D   value                         N   const
+000000120529      *
+000000120529     D lmap_addAll     PR                  extproc('lmap_addAll')
+000000120529     D   mapPtr                        *   const
+000000120529     D   srcMapPtr                     *   const
+000000120529      *
+000000120529     D lmap_remove     PR                  extproc('lmap_remove')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_clear      PR                  extproc('lmap_clear')
+000000120529     D   mapPtr                        *   const
+000000120529      *
+000000120529     D lmap_isEmpty    PR              N   extproc('lmap_isEmpty')
+000000120529     D   mapPtr                        *   const
+000000120529      *
+000000120529     D lmap_get        PR              *   extproc('lmap_get')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_iterate    PR              *   extproc('lmap_iterate')
+000000120529     D   mapPtr                        *   const
+000000120529      *
+000000120529     D lmap_abortIteration...
+000000120529     D                 PR                  extproc('lmap_abortIteration')
+000000120529     D   mapPtr                        *   const
+000000120529      *
+000000120529     D lmap_containsKey...
+000000120529     D                 PR              N   extproc('lmap_containsKey')
+000000120529     D   mapPtr                        *   const
+000000120529     D   keyPtr                        *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_containsValue...
+000000120529     D                 PR              N   extproc('lmap_containsValue')
+000000120529     D   mapPtr                        *   const
+000000120529     D   valuePtr                      *   const
+000000120529     D   valueLength                 10U 0 const
+000000120529      *
+000000120529     D lmap_size       PR            10I 0 extproc('lmap_size')
+000000120529     D   mapPtr                        *   const
+000000120529      *
+000000120529     D lmap_getInteger...
+000000120529     D                 PR            10I 0 extproc('lmap_getInteger')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getString...
+000000120529     D                 PR         65535A   extproc('lmap_getString')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getShort...
+000000120529     D                 PR             5I 0 extproc('lmap_getShort')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getLong...
+000000120529     D                 PR            20I 0 extproc('lmap_getLong')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getFloat...
+000000120529     D                 PR             4F   extproc('lmap_getFloat')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getDouble...
+000000120529     D                 PR             8F   extproc('lmap_getDouble')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getBoolean...
+000000120529     D                 PR              N   extproc('lmap_getBoolean')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getTime...
+000000120529     D                 PR              T   extproc('lmap_getTime')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getTimestamp...
+000000120529     D                 PR              Z   extproc('lmap_getTimestamp')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getDate...
+000000120529     D                 PR              D   extproc('lmap_getDate')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529      *
+000000120529     D lmap_getDecimal...
+000000120529     D                 PR            15P 5 extproc('lmap_getDecimal')
+000000120529     D   mapPtr                        *   const
+000000120529     D   key                           *   const
+000000120529     D   keyLength                   10U 0 const
+000000120529
+000000120529      /endif

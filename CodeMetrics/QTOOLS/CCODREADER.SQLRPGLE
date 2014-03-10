@@ -12,9 +12,9 @@
 000112120517      */
 000113120517
 000114120517     h nomain
-000115120521     h bnddir('CMDZBNDDIR':'CEXCEPBNDD')
+000115140310     h bnddir('CMDZBNDDIR')
 000116120517
-000118120517      /include csystsrc/qsrctxt,cexception
+000118140310      /include qtoolstxt,cexception
 000119120517      /include qtoolstxt,csqlutil
 000120120521      /include qtoolstxt,cmdznconst
 000121120628      /include qtoolstxt,ccodreader

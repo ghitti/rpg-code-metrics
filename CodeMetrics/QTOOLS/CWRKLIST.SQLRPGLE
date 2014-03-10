@@ -13,36 +13,37 @@
 000112120813      */
 000113120813
 000114120813     h nomain
-000115120625     h bnddir('CEXCEPBNDD':'CMDZBNDDIR')
-000116120623
-000117120623      /include csystsrc/qsrctxt,cexception
-000118120623      /include qtoolstxt,csqlutil
-000119120625      /include qtoolstxt,cmdznconst
-000120120625      /include qtoolstxt,cwrklist
-000121120625      /include qtoolstxt,cqsyswrk
-000122120625      /include qtoolstxt,cwrkfilgen
-000123120628      /include qtoolstxt,cstringutl
-000124120623
-000125120623      ///////////////////////////////////////////////////////////////////////
-000126120623      // Constant declaration
-000127120623      ///////////////////////////////////////////////////////////////////////
-000128120623
-000129120623     d Quote           s              1a   inz(X'7D')
-000130120623     d OUTLIBRARY      c                   const('QTEMP')
-000131120623     d FILES           c                   const('FILESLIST')
-000132120623     d MEMBERS         c                   const('MEMBERLIST')
-000133120623     d GENERATE_FILES_DESC...
-000134120623     d                 c                   const('DSPFD FILE(&1/&2) +
-000135120623     d                                     TYPE(*BASATR) OUTPUT(*OUTFILE)  +
-000136120623     d                                     OUTFILE(&3/&4)')
-000137120623     d GENERATE_MEMBERS_LIST...
-000138120623     d                 c                   const('DSPFD FILE(&1/&2) +
-000139120623     d                                     TYPE(*MBRLIST) OUTPUT(*OUTFILE) +
-000140120623     d                                     OUTFILE(&3/&4)')
-000141120623
-000142120623      ///////////////////////////////////////////////////////////////////////
-000143120623      // Prototype declaration
-000144120623      ///////////////////////////////////////////////////////////////////////
+000115140310     h bnddir('CMDZBNDDIR')
+000116140310     h option(*srcstmt)
+000117120623
+000118140310      /include qtoolstxt,cexception
+000119120623      /include qtoolstxt,csqlutil
+000120120625      /include qtoolstxt,cmdznconst
+000121120625      /include qtoolstxt,cwrklist
+000122120625      /include qtoolstxt,cqsyswrk
+000123120625      /include qtoolstxt,cwrkfilgen
+000124120628      /include qtoolstxt,cstringutl
+000125120623
+000126120623      ///////////////////////////////////////////////////////////////////////
+000127120623      // Constant declaration
+000128120623      ///////////////////////////////////////////////////////////////////////
+000129120623
+000130120623     d Quote           s              1a   inz(X'7D')
+000131120623     d OUTLIBRARY      c                   const('QTEMP')
+000132120623     d FILES           c                   const('FILESLIST')
+000133120623     d MEMBERS         c                   const('MEMBERLIST')
+000134120623     d GENERATE_FILES_DESC...
+000135120623     d                 c                   const('DSPFD FILE(&1/&2) +
+000136120623     d                                     TYPE(*BASATR) OUTPUT(*OUTFILE)  +
+000137120623     d                                     OUTFILE(&3/&4)')
+000138120623     d GENERATE_MEMBERS_LIST...
+000139120623     d                 c                   const('DSPFD FILE(&1/&2) +
+000140120623     d                                     TYPE(*MBRLIST) OUTPUT(*OUTFILE) +
+000141120623     d                                     OUTFILE(&3/&4)')
+000142120623
+000143120623      ///////////////////////////////////////////////////////////////////////
+000144120623      // Prototype declaration
+000145120623      ///////////////////////////////////////////////////////////////////////
 000147120623
 000148120623     d executeCommand  pr                  extpgm('QCMDEXC')
 000149120623     d  command                   32768a   const options(*varsize)

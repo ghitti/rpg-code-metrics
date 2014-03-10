@@ -13,12 +13,12 @@
 000113120514      */
 000114120514
 000115120510     h nomain
-000116120628     h bnddir('CEXCEPBNDD':'CMDZBNDDIR')
+000116140310     h bnddir('CMDZBNDDIR')
 000117120510
 000118120628      /include qtoolstxt,cstringutl
 000119120521      /include qtoolstxt,cwrkfilgen
 000120120521      /include qtoolstxt,cmdznconst
-000121120510      /include csystsrc/qsrctxt,cexception
+000121140310      /include qtoolstxt,cexception
 000122120510
 000123120514      /////////////////////////////////////////////////////////////////////////
 000124120514      // Prototype definition

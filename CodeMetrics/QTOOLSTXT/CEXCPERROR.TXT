@@ -1,0 +1,316 @@
+000100091119     /*-
+000101091119      * Copyright (c) 2001-2006 Scott C. Klement
+000102091119      * All rights reserved.
+000103091119      *
+000104091119      * Redistribution and use in source and binary forms, with or without
+000105091119      * modification, are permitted provided that the following conditions
+000106091119      * are met:
+000107091119      * 1. Redistributions of source code must retain the above copyright
+000108091119      *    notice, this list of conditions and the following disclaimer.
+000109091119      * 2. Redistributions in binary form must reproduce the above copyright
+000110091119      *    notice, this list of conditions and the following disclaimer in the
+000111091119      *    documentation and/or other materials provided with the distribution.
+000112091119      *
+000113091119      * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+000114091119      * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+000115091119      * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPO
+000116091119      * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+000117091119      * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTI
+000118091119      * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+000119091119      * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+000120091119      * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRI
+000121091119      * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WA
+000122091119      * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+000123091119      * SUCH DAMAGE.
+000124091119      *
+000125091119      */
+000126091119
+000127091119      /if defined(CEXCPERROR)
+000128091119      /eof
+000129091119      /endif
+000130091119      /define CEXCPERROR
+000131091119
+000132091119      *-------------------------------------------------------------------
+000133091119      * error constant definitions
+000134091119      *-------------------------------------------------------------------
+000135091119
+000136091119      * these values come originally from file QCLE/H member ERRNO
+000137091119
+000138091119      * domain error in math function
+000139091119     D EDOM            C                   3001
+000140091119      * range error in math function
+000141091119     D ERANGE          C                   3002
+000142091119      * truncation on I/O operation
+000143091119     D ETRUNC          C                   3003
+000144091119      * file has not been opened
+000145091119     D ENOTOPEN        C                   3004
+000146091119      * file not opened for read
+000147091119     D ENOTREAD        C                   3005
+000148091119      * file opened for record I/O
+000149091119     D ERECIO          C                   3008
+000150091119      * file not opened for write
+000151091119     D ENOTWRITE       C                   3009
+000152091119      * stdin cannot be opened
+000153091119     D ESTDIN          C                   3010
+000154091119      * stdout cannot be opened
+000155091119     D ESTDOUT         C                   3011
+000156091119      * stderr cannot be opened
+000157091119     D ESTDERR         C                   3012
+000158091119      * bad offset to seek to
+000159091119     D EBADSEEK        C                   3013
+000160091119      * invalid file name specified
+000161091119     D EBADNAME        C                   3014
+000162091119      * invalid file mode specified
+000163091119     D EBADMODE        C                   3015
+000164091119      * invalid position specifier
+000165091119     D EBADPOS         C                   3017
+000166091119      * no record at specified position
+000167091119     D ENOPOS          C                   3018
+000168091119      * no ftell if more than 1 member
+000169091119     D ENUMMBRS        C                   3019
+000170091119      * no ftell if too many records
+000171091119     D ENUMRECS        C                   3020
+000172091119      * invalid function pointer
+000173091119     D EBADFUNC        C                   3022
+000174091119      * record not found
+000175091119     D ENOREC          C                   3026
+000176091119      * message data invalid
+000177091119     D EBADDATA        C                   3028
+000178091119      * bad option on I/O function
+000179091119     D EBADOPT         C                   3040
+000180091119      * file not opened for update
+000181091119     D ENOTUPD         C                   3041
+000182091119      * file not opened for delete
+000183091119     D ENOTDLT         C                   3042
+000184091119      * padding occurred on write operation
+000185091119     D EPAD            C                   3043
+000186091119      * bad key length option
+000187091119     D EBADKEYLN       C                   3044
+000188091119      * illegal write after read
+000189091119     D EPUTANDGET      C                   3080
+000190091119      * illegal read after write
+000191091119     D EGETANDPUT      C                   3081
+000192091119      * I/O exception non-recoverable error
+000193091119     D EIOERROR        C                   3101
+000194091119      * I/O exception recoverable error
+000195091119     D EIORECERR       C                   3102
+000196091119
+000197091119      * The following were taken from QSYSINC/SYS ERRNO:
+000198091119
+000199091119      *  Permission denied.
+000200091119     D EACCES          C                   3401
+000201091119      *  Not a directory.
+000202091119     D ENOTDIR         C                   3403
+000203091119      *  No space available.
+000204091119     D ENOSPC          C                   3404
+000205091119      *  Improper link.
+000206091119     D EXDEV           C                   3405
+000207091119      *  Operation would have caused the process to block
+000208091119     D EWOULDBLOCK     C                   3406
+000209091119      *  Operation would have caused the process to block
+000210091119      *  (compatable with BSD)
+000211091119     D EAGAIN          C                   3406
+000212091119      *  Interrupted function call.
+000213091119     D EINTR           C                   3407
+000214091119      *  The address used for an argument was no
+000215091119     D EFAULT          C                   3408
+000216091119      *  Operation timed out
+000217091119     D ETIME           C                   3409
+000218091119      *  No such device or address
+000219091119     D ENXIO           C                   3415
+000220091119      *  Socket closed
+000221091119     D ECLOSED         C                   3417
+000222091119      *  Address already in use.
+000223091119     D EADDRINUSE      C                   3420
+000224091119      *  Address not available.
+000225091119     D EADDRNOTAVAIL   C                   3421
+000226091119      *  The type of socket is not supported in
+000227091119     D EAFNOSUPPORT    C                   3422
+000228091119      *  Operation already in progress.
+000229091119     D EALREADY        C                   3423
+000230091119      *  Connection ended abnormally.
+000231091119     D ECONNABORTED    C                   3424
+000232091119      *  A remote host refused an attempted conn
+000233091119     D ECONNREFUSED    C                   3425
+000234091119      *  A connection with a remote socket was r
+000235091119     D ECONNRESET      C                   3426
+000236091119      *  Operation requires destination address.
+000237091119     D EDESTADDRREQ    C                   3427
+000238091119      *  A remote host is not available.
+000239091119     D EHOSTDOWN       C                   3428
+000240091119      *  A route to the remote host is not avail
+000241091119     D EHOSTUNREACH    C                   3429
+000242091119      *  Operation in progress.
+000243091119     D EINPROGRESS     C                   3430
+000244091119      *  A connection has already been establish
+000245091119     D EISCONN         C                   3431
+000246091119      *  Message size out of range.
+000247091119     D EMSGSIZE        C                   3432
+000248091119      *  The network is not currently available.
+000249091119     D ENETDOWN        C                   3433
+000250091119      *  A socket is connected to a host that is
+000251091119     D ENETRESET       C                   3434
+000252091119      *  Cannot reach the destination network.
+000253091119     D ENETUNREACH     C                   3435
+000254091119      *  There is not enough buffer space for th
+000255091119     D ENOBUFS         C                   3436
+000256091119      *  The protocol does not support the speci
+000257091119     D ENOPROTOOPT     C                   3437
+000258091119      *  Requested operation requires a connecti
+000259091119     D ENOTCONN        C                   3438
+000260091119      *  The specified descriptor does not refer
+000261091119     D ENOTSOCK        C                   3439
+000262091119      *  Operation not supported.
+000263091119     D ENOTSUP         C                   3440
+000264091119      *  Operation not supported.
+000265091119     D EOPNOTSUPP      C                   3440
+000266091119      *  The socket protocol family is not suppo
+000267091119     D EPFNOSUPPORT    C                   3441
+000268091119      *  No protocol of the specified type and d
+000269091119     D EPROTONOSUPPORT...
+000270091119     D                 C                   3442
+000271091119      *  The socket type or protocols are not co
+000272091119     D EPROTOTYPE      C                   3443
+000273091119      *  An error indication was sent by the pee
+000274091119     D ERCVDERR        C                   3444
+000275091119      *  Cannot send data after a shutdown.
+000276091119     D ESHUTDOWN       C                   3445
+000277091119      *  The specified socket type is not suppor
+000278091119     D ESOCKTNOSUPPORT...
+000279091119     D                 C                   3446
+000280091119      *  A remote host did not respond within th
+000281091119     D ETIMEDOUT       C                   3447
+000282091119      *  The protocol required to support the sp
+000283091119     D EUNATCH         C                   3448
+000284091119      *  Descriptor not valid.
+000285091119     D EBADF           C                   3450
+000286091119      *  Too many open files for this process.
+000287091119     D EMFILE          C                   3452
+000288091119      *  Too many open files in the system.
+000289091119     D ENFILE          C                   3453
+000290091119      *  Broken pipe.
+000291091119     D EPIPE           C                   3455
+000292091119      *  File exists.
+000293091119     D EEXIST          C                   3457
+000294091119      *  Resource deadlock avoided.
+000295091119     D EDEADLK         C                   3459
+000296091119      *  Storage allocation request failed.
+000297091119     D ENOMEM          C                   3460
+000298091119      *  The synchronization object no longer ex
+000299091119     D EOWNERTERM      C                   3462
+000300091119      * The synchronization object was destroyed
+000301091119     D EDESTROYED      C                   3463
+000302091119      *  Operation terminated.
+000303091119     D ETERM           C                   3464
+000304091119      *  Maximum link count for a file was excee
+000305091119     D EMLINK          C                   3468
+000306091119      *  Seek request not supported for object.
+000307091119     D ESPIPE          C                   3469
+000308091119      *  Function not implemented.
+000309091119     D ENOSYS          C                   3470
+000310091119      *  Specified target is a directory.
+000311091119     D EISDIR          C                   3471
+000312091119      *  Read-only file system.
+000313091119     D EROFS           C                   3472
+000314091119      *  Unknown system state.
+000315091119     D EUNKNOWN        C                   3474
+000316091119      *  Iterator is invalid.
+000317091119     D EITERBAD        C                   3475
+000318091119      *  A damaged object was encountered.
+000319091119     D EDAMAGE         C                   3484
+000320091119      *  A loop exists in the symbolic links.
+000321091119     D ELOOP           C                   3485
+000322091119      *  A path name is too long.
+000323091119     D ENAMETOOLONG    C                   3486
+000324091119      *  No locks available
+000325091119     D ENOLCK          C                   3487
+000326091119      *  Directory not empty.
+000327091119     D ENOTEMPTY       C                   3488
+000328091119      *  System resources not available to compl
+000329091119     D ENOSYSRSC       C                   3489
+000330091119      *  Conversion error.
+000331091119     D ECONVERT        C                   3490
+000332091119      *  Argument list too long.
+000333091119     D E2BIG           C                   3491
+000334091119      *  Conversion stopped due to input charact
+000335091119     D EILSEQ          C                   3492
+000336091119      * Object has soft damage.
+000337091119     D ESOFTDAMAGE     C                   3497
+000338091119      *  User not enrolled in system distributio
+000339091119     D ENOTENROLL      C                   3498
+000340091119      *  Object is suspended.
+000341091119     D EOFFLINE        C                   3499
+000342091119      * Object is a read only object.
+000343091119     D EROOBJ          C                   3500
+000344091119      * Area being read from or written to is lo
+000345091119     D ELOCKED         C                   3506
+000346091119      * Object too large.
+000347091119     D EFBIG           C                   3507
+000348091119      * The semaphore, shared memory, or message
+000349091119     D EIDRM           C                   3509
+000350091119      * The queue does not contain a message of
+000351091119     D ENOMSG          C                   3510
+000352091119      * File ID conversion of a directory failed
+000353091119     D EFILECVT        C                   3511
+000354091119      * A File ID could not be assigned when lin
+000355091119     D EBADFID         C                   3512
+000356091119      * A File ID could not be assigned when lin
+000357091119     D ESTALE          C                   3513
+000358091119      * No such process.
+000359091119     D ESRCH           C                   3515
+000360091119      * Process not enabled for signals.
+000361091119     D ENOTSIGINIT     C                   3516
+000362091119      * No child process.
+000363091119     D ECHILD          C                   3517
+000364091119      * The operation would have exceeded the ma
+000365091119     D ETOOMANYREFS    C                   3523
+000366091119      * Function not allowed.
+000367091119     D ENOTSAFE        C                   3524
+000368091119      * Object is too large to process.
+000369091119     D EOVERFLOW       C                   3525
+000370091119      * Journal damaged.
+000371091119     D EJRNDAMAGE      C                   3526
+000372091119      * Journal inactive.
+000373091119     D EJRNINACTIVE    C                   3527
+000374091119      * Journal space or system storage error.
+000375091119     D EJRNRCVSPC      C                   3528
+000376091119      * Journal is remote.
+000377091119     D EJRNRMT         C                   3529
+000378091119      * New journal receiver is needed.
+000379091119     D ENEWJRNRCV      C                   3530
+000380091119      * New journal is needed.
+000381091119     D ENEWJRN         C                   3531
+000382091119      * Object already journaled.
+000383091119     D EJOURNALED      C                   3532
+000384091119      * Entry too large to send.
+000385091119     D EJRNENTTOOLONG  C                   3533
+000386091119      * Object is a Datalink object.
+000387091119     D EDATALINK       C                   3534
+000388091119
+000389091119      * The following values are defined by POSIX ISO/IEC 9945-1:1990
+000390091119      *  (these were also taken from QCLE/H member ERRNO)
+000391091119
+000392091119      * invalid argument
+000393091119     D EINVAL          C                   3021
+000394091119      * input/output error
+000395091119     D EIO             C                   3006
+000396091119      * no such device
+000397091119     D ENODEV          C                   3007
+000398091119      * resource busy
+000399091119     D EBUSY           C                   3029
+000400091119      * no such file or library
+000401091119     D ENOENT          C                   3025
+000402091119      * operation not permitted
+000403091119     D EPERM           C                   3027
+000404091119
+000405091119      *-------------------------------------------------------------------
+000406091119      * prototype definitions -- the QC2LE binding directory is required
+000407091119      *   in order to find these functions.
+000408091119      *-------------------------------------------------------------------
+000409091119     D sys_errno       PR              *   ExtProc('__errno')
+000410091119
+000411091119     D strerror        PR              *   ExtProc('strerror')
+000412091119     D    errnum                     10I 0 value
+000413091119
+000414091119     D perror          PR                  ExtProc('perror')
+000415091119     D    comment                      *   value options(*string)

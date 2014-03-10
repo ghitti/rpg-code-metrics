@@ -1,0 +1,189 @@
+000100091119      /if not defined(CEXCPTYPES)
+000101091119      /define CEXCPTYPES
+000102091119
+000103100911      //-----------------------------------------------------------------------
+000104100911      // Definicion de constantes
+000105100911      //-----------------------------------------------------------------------
+000106100911     d ENTRY_ARRAY_SIZE...
+000107100911     d                 c                   const(100)
+000108100911
+000109091119      //-----------------------------------------------------------------------
+000110091119      // Definicion de tipos
+000111091119      //-----------------------------------------------------------------------
+000112091119     d errorDS_Type...
+000113091119     d                 ds            16    qualified
+000114091119     d   bytesProv                   10i 0 inz(16)
+000115091119     d   bytesAvail                  10i 0
+000116091119     d   exceptionID                  7
+000117091119
+000118091119      //@@field
+000119091119      //@name: RCVM0300
+000120091119      //@objective: formato en el que se obtienen los datos de la excepcion
+000121091119      //@@
+000122091119     d RCVM0300        ds                  qualified based(DummyPtr)
+000123091119     d ByteReturned                  10i 0
+000124091119     d ByteAvail                     10i 0
+000125091119     d MsgSeverity                   10i 0
+000126091119     d MsgId                          7a
+000127091119     d MsgType                        2a
+000128091119     d MsgKey                         4a
+000129091119     d MsgFileName                   10a
+000130091119     d MsgLibSpec                    10a
+000131091119     d MsgLibUsed                    10a
+000132091119     d AlertOption                    9a
+000133091119     d CCSIDCnvIndText...
+000134091119     d                               10i 0
+000135091119     d CCSIDCnvIndData...
+000136091119     d                               10i 0
+000137091119     d CCSIDMsg                      10i 0
+000138091119     d CCSIDReplace                  10i 0
+000139091119     d LenReplace1                   10i 0
+000140091119     d LenReplace2                   10i 0
+000141091119     d LenMsgReturn                  10i 0
+000142091119     d LenMsgAvail                   10i 0
+000143091119     d LenHelpReturn                 10i 0
+000144091119     d LenHelpAvail                  10i 0
+000145091119     d LenSenderReturn...
+000146091119     d                               10i 0
+000147091119     d LenSenderAvail...
+000148091119     d                               10i 0
+000149091119     d MsgData                     5000a
+000150091119
+000151091119      //@@field:
+000152091119      //@name: RCVM0300SndRcvInfo
+000153091119      //@objective: informacion de la entidad que genera la excepcion
+000154091119      //@@
+000155091119     d RCVM0300SndRcvInfo...
+000156091119     d                 ds                  qualified based(DummyPtr)
+000157091119     d SendingJob                    10a
+000158091119     d SendIngJobProfile...
+000159091119     d                               10a
+000160091119     d SendingJobNo                   6a
+000161091119     d DateSent                       7a
+000162091119     d TimeSent                       6a
+000163091119     d SendingType                    1a
+000164091119     d ReceivingType                  1a
+000165091119     d SendingPgm                    12a
+000166091119     d SendingModule                 10a
+000167091119     d SendingProcedure...
+000168091119     d                              256a
+000169091119     d                                1a
+000170091119     d NoStateNosSending...
+000171091119     d                               10i 0
+000172091119     d StateNosSending...
+000173091119     d                               30a
+000174091119     d ReceivingPgm                  10a
+000175091119     d ReceivingModule...
+000176091119     d                               10a
+000177091119     d ReceivingProcedure...
+000178091119     d                              256a
+000179091119     d                               10a
+000180091119     d NoStateNosReceiving...
+000181091119     d                               10i 0
+000182091119     d StateNosReceiving...
+000183091119     d                               30a
+000184091119     d                                2a
+000185091119     d LongSendingPgmNameOffset...
+000186091119     d                               10i 0
+000187091119     d LongSendingPgmNameLength...
+000188091119     d                               10i 0
+000189091119     d LongSendingProcNameOffset...
+000190091119     d                               10i 0
+000191091119     d LongSendingProcNameLength...
+000192091119     d                               10i 0
+000193091119     d LongReceivingProcNameOffset...
+000194091119     d                               10i 0
+000195091119     d LongReceivingProcNameLength...
+000196091119     d                               10i 0
+000197091119     d MicroSeconds                   6a
+000198091119     d SendingUsrPrf                 10a
+000199091119     d Names                       4000a
+000200091119
+000201100911      //@@field:
+000202100911      //@name: stackEntry_type
+000203100911      //@objective: define la estructura de los datos de cada una de las
+000204100911      //            entradas de la pila de llamadas
+000205100911      //@@
+000206100911     d stackEntry_type...
+000207100911     d                 ds                  qualified based(p_dummy)
+000208100911     d  Len                          10i 0
+000209100911     d  StmtDisp                     10i 0
+000210100911     d  StmtCnt                      10i 0
+000211100911     d  ProcDisp                     10i 0
+000212100911     d  ProcLen                      10i 0
+000213100911     d  RqsLvl                       10i 0
+000214100911     d  PgmName                      10a
+000215100911     d  PgmLib                       10a
+000216100911     d  MiInst                       10i 0
+000217100911     d  Module                       10a
+000218100911     d  ModLib                       10a
+000219100911     d  CtlBdy                        1a
+000220100911     d                                3a
+000221100911     d  ActGrpNo                     10u 0
+000222100911     d  ActGrp                       10a
+000223100911
+000224100911      //@@field:
+000225100911      //@name: callStackEntry_type
+000226100911      //@objective: define el tipo de los elementos del arreglo de
+000227100911      //            entradas de la pila de llamadas
+000228100911      //@@
+000229100911     d callStackEntry_type...
+000230100911     d                 ds                  qualified based(p_dummy)
+000231100911     d  stackEntryInfo...
+000232100911     d                                     likeds(stackEntry_type)
+000233100911     d  statement                    10a
+000234100911     d  procedureName               255a
+000235100911
+000236091119      //-----------------------------------------------------------------------
+000237091119      // Prototipos de procedimientos
+000238091119      //-----------------------------------------------------------------------
+000239091119
+000240091119      //@@method:
+000241091119      //@name: ReceiveProgramMessage (API QMHRCVPM)
+000242091119      //@description: obtiene un mensaje de una cola de mensajes de programa
+000243091119      //@@
+000244091119     d ReceiveProgramMessage...
+000245091119     d                 pr                  extpgm('QMHRCVPM')
+000246091119     d  MsgData                    3000a   options(*varsize)
+000247091119     d  MsgDataLen                   10i 0 const
+000248091119     d  FormatName                    8a   const
+000249091119     d  CallStEntry                  10a   const
+000250091119     d  CallStCount                  10i 0 const
+000251091119     d  MsgType                      10a   const
+000252091119     d  MsgKey                        4a   const
+000253091119     d  WaitTime                     10i 0 const
+000254091119     d  MsgAction                    10a   const
+000255091119     d  Error                              like(errorDS_Type)
+000256091119
+000257091119      //@@method:
+000258091119      //@name: SendProgramMessage (API QMHSNDPM)
+000259091119      //@description: envia un mensaje de programa
+000260091119      //@@
+000261091119     d SendProgramMessage...
+000262091119     d                 pr                  extpgm('QMHSNDPM')
+000263091119     d   MsgID                        7    const
+000264091119     D   MsgFile                     20    const
+000265091119     d   MsgDta                    3000a   const
+000266091119     d   MsgDtaLen                   10i 0 const
+000267091119     d   MsgType                     10    const
+000268091119     d   MsgQ                        10    const
+000269091119     d   MsgQNbr                     10i 0 const
+000270091119     d   MsgKey                       4
+000271091119     d   ErrorDS                           like(errorDS_Type)
+000272091119
+000273091119      //@@method:
+000274091119      //@name: GetCallStack (API QWVRCSTK)
+000275091119      //@description: obtiene informacion de la pila de llamadas
+000276091119      //@@
+000277091119     d GetCallStack    pr                  extpgm('QWVRCSTK')
+000278091119     d  RcvVar                    65535a   options(*varsize)
+000279091119     d  RcvVarLen                    10i 0 const
+000280091119     d  Format                        8a   const
+000281091119     d  JobId                        64a   const options(*varsize)
+000282091119     d  JobIdFmt                      8a   const
+000283091119     d  ErrorCode                 32767a   options(*varsize)
+000284091119
+000285091119
+000286100911
+000287091119
+000288091119      /endif

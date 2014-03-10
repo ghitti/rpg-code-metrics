@@ -1,0 +1,142 @@
+000100120420      /if not defined (CEEAPI)
+000101120420      /define CEEAPI
+000102120420
+000103120420      *-------------------------------------------------------------------------
+000104120420      * ILE CEE API Prototypes
+000105120420      *-------------------------------------------------------------------------
+000106120420
+000107120420     D cee_getOpDescInfo...
+000108120420     D                 PR                  extproc('CEEDOD')
+000109120420     D   position                    10I 0 const
+000110120420     D   descType                    10I 0
+000111120420     D   dataType                    10I 0
+000112120420     D   descInfo1                   10I 0
+000113120420     D   descInfo2                   10I 0
+000114120420     D   length                      10I 0
+000115120420     D   feedback                    12A   options(*omit)
+000116120420
+000117120420
+000118120420      *-------------------------------------------------------------------------
+000119120420      * Date API Prototypes
+000120120420      *-------------------------------------------------------------------------
+000121120420     D cee_getLilianDate...
+000122120420     D                 PR                  extproc('CEEDAYS') opdesc
+000123120420     D   charDate                    20A   const options(*varsize)
+000124120420     D   formatString                20A   const options(*varsize)
+000125120420     D   lilianDate                  10I 0
+000126120420     D   errorcode                  100A   options(*varsize : *nopass)
+000127120420      *
+000128120420     D cee_getDateFromLilian...
+000129120420     D                 PR                  extproc('CEEDATE') opdesc
+000130120420     D   lilianDate                  10I 0 const
+000131120420     D   formatString                20A   const options(*varsize)
+000132120420     D   dateString                  20A   options(*varsize)
+000133120420     D   errorcode                  100A   options(*varsize : *nopass)
+000134120420      *
+000135120420      * CEEDYWK returns the weekday as a number between 1 and 7
+000136120420      *
+000137120420      * 1 = Sonntag    / Sunday
+000138120420      * 2 = Montag     / Monday
+000139120420      * 3 = Dienstag   / Tuesday
+000140120420      * 4 = Mittwoch   / Wednesday
+000141120420      * 5 = Donnerstag / Thursday
+000142120420      * 6 = Freitag    / Friday
+000143120420      * 7 = Samstag    / Saturday
+000144120420      *
+000145120420      * 0 = Fehler bei der Berechnung / ungltiges Datum
+000146120420      *
+000147120420     D cee_getDayOfWeekNumeric...
+000148120420     D                 PR                  extproc('CEEDYWK') opdesc
+000149120420     D   lilianDate                  10I 0 const
+000150120420     D   dayOfWeek                   10I 0
+000151120420     D   errorcode                  100A   options(*varsize : *nopass)
+000152120420      *
+000153120420
+000154120420      *-------------------------------------------------------------------------
+000155120420      * Memory Management API Prototypes
+000156120420      *-------------------------------------------------------------------------
+000157120420      * Interface to the CEEGTST API (Get Heap Storage).
+000158120420      *  1) HeapId = Id of the heap.
+000159120420      *  2) Size   = Number of bytes to allocate
+000160120420      *  3) RetAddr= Return address of the allocated storage
+000161120420      *  4) *OMIT  = The feedback parameter.  Specifying *OMIT here
+000162120420      *              means that we will receive an exception from
+000163120420      *              the API if it cannot satisfy our request.
+000164120420      *              Since we do not monitor for it, the calling
+000165120420      *              procedure will receive the exception.
+000166120420      *-------------------------------------------------------------------------
+000167120420     D cee_getStorage...
+000168120420     D                 PR                  extproc('CEEGTST')
+000169120420     D   heapId                      10I 0 const
+000170120420     D   size                        10I 0 const
+000171120420     D   retAddr                       *
+000172120420     D   feedback                    12A   options(*omit)
+000173120420
+000174120420      *-------------------------------------------------------------------------
+000175120420      * Interface to the CEEFRST API (Free Storage).
+000176120420      *  1) Addr   = Address of the allocated storage to be freed
+000177120420      *  2) *OMIT  = The feedback parameter.  Specifying *OMIT here
+000178120420      *              means that we will receive an exception from
+000179120420      *              the API if it cannot satisfy our request.
+000180120420      *              Since we do not monitor for it, the calling
+000181120420      *              procedure will receive the exception.
+000182120420      *-------------------------------------------------------------------------
+000183120420     D cee_freeStorage...
+000184120420     D                 PR                  extproc('CEEFRST')
+000185120420     D   address                       *
+000186120420     D   feedback                    12A   options(*omit)
+000187120420
+000188120420      *-------------------------------------------------------------------------
+000189120420      * Interface to the CEECZST API (Reallocate Storage).
+000190120420      *  1) Addr   = Address of the allocated storage
+000191120420      *  2) Size   = New size (number of bytes) of the allocated storage
+000192120420      *  3) *OMIT  = The feedback parameter.  Specifying *OMIT here
+000193120420      *              means that we will receive an exception from
+000194120420      *              the API if it cannot satisfy our request.
+000195120420      *              Since we do not monitor for it, the calling
+000196120420      *              procedure will receive the exception.
+000197120420      *-------------------------------------------------------------------------
+000198120420     D cee_reallocateStorage...
+000199120420     D                 PR                  extproc('CEECZST')
+000200120420     D   address                       *
+000201120420     D   size                        10I 0 const
+000202120420     D   feedback                    12A   options(*omit)
+000203120420
+000204120420      *-------------------------------------------------------------------------
+000205120420      * Interface to the CEECRHP API (Create Heap).
+000206120420      *  1) HeapId     = Id of the heap.
+000207120420      *  2) InitSize   = Initial size of the heap.
+000208120420      *  3) Incr       = Number of bytes to increment if heap must be
+000209120420      *                  enlarged.
+000210120420      *  4) AllocStrat = Allocation strategy for this heap.  We will
+000211120420      *                  specify a value of 0 which allows the system
+000212120420      *                  to choose the optimal strategy.
+000213120420      *  5) *OMIT      = The feedback parameter.  Specifying *OMIT here
+000214120420      *                  means that we will receive an exception from
+000215120420      *                  the API if it cannot satisfy our request.
+000216120420      *                  Since we do not monitor for it, the calling
+000217120420      *                  procedure will receive the exception.
+000218120420      *-------------------------------------------------------------------------
+000219120420     D cee_createHeap...
+000220120420     D                 PR                  extproc('CEECRHP')
+000221120420     D   heapId                      10I 0
+000222120420     D   initSize                    10I 0 const options(*omit)
+000223120420     D   increment                   10I 0 const options(*omit)
+000224120420     D   allocStrat                  10I 0 const options(*omit)
+000225120420     D   feedback                    12A   options(*omit)
+000226120420
+000227120420      *-------------------------------------------------------------------------
+000228120420      * Interface to the CEEDSHP API (Discard Heap).
+000229120420      *  1) HeapId     = Id of the heap.
+000230120420      *  2) *OMIT      = The feedback parameter.  Specifying *OMIT here
+000231120420      *                  means that we will receive an exception from
+000232120420      *                  the API if it cannot satisfy our request.
+000233120420      *                  Since we do not monitor for it, the calling
+000234120420      *                  procedure will receive the exception.
+000235120420      *-------------------------------------------------------------------------
+000236120420     D cee_discardHeap...
+000237120420     D                 PR                  extproc('CEEDSHP')
+000238120420     D   heapId                      10I 0
+000239120420     D   feedback                    12A   options(*omit)
+000240120420
+000241120420      /endif

@@ -10,10 +10,10 @@
 000110120521      * \rev    21-05-2012 Isaac Ramirez
 000111120521      */
 000113120518     h nomain
-000114120528     h bnddir('CMDZBNDDIR':'CEXCEPBNDD')
+000114140310     h bnddir('CMDZBNDDIR')
 000115120607     h option(*srcstmt)
 000116120521
-000117120521      /include csystsrc/qsrctxt,cexception
+000117140310      /include qtoolstxt,cexception
 000118120521      /include qtoolstxt,cmdznconst
 000119120521      /include qtoolstxt,ccodanlyzr
 000120120528      /include qtoolstxt,ccodstats

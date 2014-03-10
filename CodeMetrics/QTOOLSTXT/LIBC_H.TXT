@@ -1,0 +1,113 @@
+000100120420      /if not defined(LIBC)
+000101120420      /define LIBC
+000102120420
+000103120420      *-------------------------------------------------------------------------
+000104120420      * Prototypes for C-Functions
+000105120420      *-------------------------------------------------------------------------
+000106120420
+000107120420      /if not defined(QUSEC)
+000108120420      /define QUSEC
+000109120420      /copy QSYSINC/QRPGLESRC,QUSEC
+000110120420      /endif
+000111120420
+000112120420      *
+000113120420      * string functions
+000114120420      *
+000115120420     D strtok          PR              *          extproc('strtok')
+000116120420     D  i_string                       *   value  options(*string)
+000117120420     D  i_token                        *   value  options(*string)
+000118120420      *
+000119120420     D strlen          PR            10U 0 extproc('strlen')
+000120120420     D   string                        *   value
+000121120420      *
+000122120420     D requestControlBlockLower...
+000123120420     D                 DS                  qualified
+000124120420     D   type                        10I 0 inz(0)
+000125120420     D   ccsid                       10I 0 inz(0)
+000126120420     D   case                        10I 0 inz(0)
+000127120420     D   res1                        10A   inz(*ALLX'00')
+000128120420      *
+000129120420     D requestControlBlockUpper...
+000130120420     D                 DS                  qualified
+000131120420     D   type                        10I 0 inz(1)
+000132120420     D   ccsid                       10I 0 inz(0)
+000133120420     D   case                        10I 0 inz(0)
+000134120420     D   res1                        10A   inz(*ALLX'00')
+000135120420      *
+000136120420     D caseConvert     PR                  extproc('QlgConvertCase')
+000137120420     D   reqContBlock                      const
+000138120420     D                                     likeds(requestControlBlockUpper)
+000139120420     D   input                     1024A   const options(*varsize)
+000140120420     D   output                    1024A   options(*varsize)
+000141120420     D   len                         10I 0 const
+000142120420     D   errorcode                         likeds(QUSEC) options(*varsize)
+000143120420
+000144120420      *
+000145120420      * memory functions
+000146120420      *
+000147120420     D memcpy          PR              *          extproc('memcpy')
+000148120420     D  dest                           *   value
+000149120420     D  source                         *   value
+000150120420     D  count                        10U 0 value
+000151120420      *
+000152120420     D memset          PR              *          extproc('memset')
+000153120420     D  i_pDest                        *   value
+000154120420     D  i_char                       10I 0 value
+000155120420     D  i_count                      10U 0 value
+000156120420      *
+000157120420     D memmove         PR              *          extproc('memmove')
+000158120420     D  pMemDest                       *   value
+000159120420     D  pMemSrc                        *   value
+000160120420     D  memSize                      10U 0 value
+000161120420      *
+000162120420     D memcmp          PR            10I 0        extproc('memcmp')
+000163120420     D  pBuf1                          *   value
+000164120420     D  pBuf2                          *   value
+000165120420     D  count                        10U 0 value
+000166120420      *
+000167120420     D memicmp         PR            10I 0        extproc('__memicmp')
+000168120420     D  pBuf1                          *   value
+000169120420     D  pBuf2                          *   value
+000170120420     D  count                        10U 0 value
+000171120420
+000172120420      *
+000173120420      * math functions
+000174120420      *
+000175120420     D ceiling         PR             8F   extproc('ceil')
+000176120420     D   value                        8F   value
+000177120420      *
+000178120420     D floor           PR             8F   extproc('floor')
+000179120420     D   value                        8F   value
+000180120420
+000181120420      *
+000182120420      * other functions
+000183120420      *
+000184120420     D tmpnam          PR              *   extproc('tmpnam')
+000185120420     D   buffer                      39A   options(*omit)
+000186120420      *
+000187120420     D tmpnamIFS       PR              *   extproc('_C_IFS_tmpnam')
+000188120420     D   buffer                      39A   options(*omit)
+000189120420      *
+000190120420     D system          PR            10I 0 extproc('system')
+000191120420     D   command                       *   value options(*string)
+000192120420      *
+000193120420     D srand           PR                         extproc('srand')
+000194120420     D  i_seed                       10U 0 value
+000195120420      *
+000196120420     D rand            PR            10I 0        extproc('rand')
+000197120420      *
+000198120420     D qsort           PR              *          extproc('qsort')
+000199120420     D  memPtr                         *   value
+000200120420     D  numElem                      10U 0 value
+000201120420     D  width                        10U 0 value
+000202120420     D  pSortFunc                      *   value  procptr
+000203120420      *
+000204120420     D bsearch         PR              *          extproc('bsearch')
+000205120420     D  keyPtr                         *   value
+000206120420     D  memPtr                         *   value
+000207120420     D  numElem                      10U 0 value
+000208120420     D  width                        10U 0 value
+000209120420     D  pSearchFnc                     *   value  procptr
+000210120420
+000211120420      /endif
+000212120420

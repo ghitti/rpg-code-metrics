@@ -1,0 +1,198 @@
+000100000000      ** Header file for calling the "Regular Expression" functions
+000200000000      **   provided by the ILE C Runtime Library from an RPG IV
+000300000000      **   program.                 Scott Klement, 2001-05-04
+000400000000      **                       Converted to qualified DS 2003-11-29
+000500000000      **
+000600000000     D/if defined(REGEX_H)
+000700000000     D/eof
+000800000000     D/endif
+000900000000     D/define REGEX_H
+001000000000
+001100000000
+001200000000      **------------------------------------------------------------
+001300000000      * cflags for regcomp()
+001400000000      **------------------------------------------------------------
+001500000000     D REG_BASIC       C                   CONST(0)
+001600000000     D REG_EXTENDED    C                   CONST(1)
+001700000000     D REG_ICASE       C                   CONST(2)
+001701000000     D REG_ICASEX      C                   CONST(3)
+001800000000     D REG_NEWLINE     C                   CONST(4)
+001900000000     D REG_NOSUB       C                   CONST(8)
+001901000000     D REG_ALT_NL      C                   CONST(10)
+002000000000
+002100000000
+002200000000      **------------------------------------------------------------
+002300000000      * eflags for regexec()
+002400000000      **------------------------------------------------------------
+002500000000     D REG_NOTBOL      C                   CONST(256)
+002600000000     D REG_NOTEOL      C                   CONST(512)
+002700000000
+002800000000
+002900000000      **------------------------------------------------------------
+003000000000      *  errors returned
+003100000000      **------------------------------------------------------------
+003200000000     D REG_NOMATCH     C                   CONST(1)
+003300000000     D REG_BADPAT      C                   CONST(2)
+003400000000     D REG_ECOLLATE    C                   CONST(3)
+003500000000     D REG_ECTYPE      C                   CONST(4)
+003600000000     D REG_EESCAPE     C                   CONST(5)
+003700000000     D REG_ESUBREG     C                   CONST(6)
+003800000000     D REG_EBRACK      C                   CONST(7)
+003900000000     D REG_EPAREN      C                   CONST(8)
+004000000000     D REG_EBRACE      C                   CONST(9)
+004100000000     D REG_BADBR       C                   CONST(10)
+004200000000     D REG_ERANGE      C                   CONST(11)
+004300000000     D REG_ESPACE      C                   CONST(12)
+004400000000     D REG_BADRPT      C                   CONST(13)
+004500000000     D REG_ECHAR       C                   CONST(14)
+004600000000     D REG_EBOL        C                   CONST(15)
+004700000000     D REG_EEOL        C                   CONST(16)
+004800000000     D REG_ECOMP       C                   CONST(17)
+004900000000     D REG_EEXEC       C                   CONST(18)
+005000000000
+005100000000
+005200000000      **------------------------------------------------------------
+005300000000      *  Structure of a compiled regular expression:
+005400000000      *
+005500000000      *     #define __REG_SUBEXP_MAX       9
+005600000000      *     typedef struct {
+005700000000      *         size_t        re_nsub;
+005800000000      *         void          *re_comp;
+005900000000      *         int           re_cflags;
+006000000000      *         size_t        re_erroff;
+006100000000      *         size_t        re_len;
+006200000000      *         _LC_colval_t  re_ucoll[2];
+006300000000      *         void          *re_lsub[__REG_SUBEXP_MAX+1];
+006400000000      *         void          *re_esub[__REG_SUBEXP_MAX+1];
+006500000000      *         unsigned char re_map[256];
+006600000000      *         mbstate_t     re_shift;
+006700000000      *         short         re_dbcs;
+006800000000      *     } regex_t;
+006900000000      **------------------------------------------------------------
+007000000000     D REG_SUBEXP_MAX  C                   10
+007100000000     D regex_t         DS                  qualified
+007200000000     D                                     align based(prototype_only)
+007300000000     D   re_nsub                     10I 0
+007400000000     D   re_comp                       *
+007500000000     D   re_cflags                   10I 0
+007600000000     D   re_erroff                   10I 0
+007700000000     D   re_len                      10I 0
+007800000000     D   re_ucoll                    10I 0 dim(2)
+007900000000     D   re_lsub                       *   DIM(REG_SUBEXP_MAX)
+008000000000     D   re_esub                       *   DIM(REG_SUBEXP_MAX)
+008100000000     D   re_map                     256A
+008200000000     D   re_shift                     5I 0
+008300000000     D   re_dbcs                      5I 0
+008400000000
+008500000000
+008600000000      **------------------------------------------------------------
+008700000000      *  structure used to report matches found by regexec()
+008800000000      *
+008900000000      *     typedef struct {
+009000000000      *         _off_t     rm_so; /* offset of substring             */
+009100000000      *         mbstate_t  rm_ss; /* shift state at start of subst   */
+009200000000      *         _off_t     rm_eo; /* offset of next char after subst */
+009300000000      *         mbstate_t  rm_es; /* shift state at end of subst     */
+009400000000      *     } regmatch_t;
+009500000000      *
+009600000000      * NOTE: It's important to remember that C starts numbering
+009700000000      *    string positions with '0' and RPG starts with '1'.
+009800000000      *    Thus, rm_so+1 is the first char in substring, rm_eo is
+009900000000      *    the last char in the substring in RPG.
+010000000000      **------------------------------------------------------------
+010100000000     D regmatch_t      DS                  qualified
+010200000000     D                                     align based(prototype_only)
+010300000000     D   rm_so                       10I 0
+010400000000     D   rm_ss                        5I 0
+010500000000     D   rm_eo                       10I 0
+010600000000     D   rm_es                        5I 0
+010700000000
+010800000000
+010900000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+011000000000      * regcomp() -- Compile a Regular Expression ("RE")
+011100000000      *
+011200000000      *     int regcomp(regex_t *preg, const char *pattern,
+011300000000      *              int cflags);
+011400000000      *
+011500000000      * where:
+011600000000      *       preg (output) = the compiled regular expression.
+011700000000      *    pattern (input)  = the RE to be compiled.
+011800000000      *     cflags (input)  = the sum of the cflag constants
+011900000000      *                       (listed above) for this RE.
+012000000000      *
+012100000000      * Returns 0 = success, otherwise an error number.
+012200000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+012300000000     D regcomp         PR            10I 0 extproc('regcomp')
+012400000000     D   preg                              likeds(regex_t)
+012500000000     D   pattern                       *   value options(*string)
+012600000000     D   cflags                      10I 0 value
+012700000000
+012800000000
+012900000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+013000000000      * regexec() -- Execute a compiled Regular Expression ("RE")
+013100000000      *
+013200000000      *     int regexec(const regex_t *preg, const char *string,
+013300000000      *              size_t nmatch, regmatch_t *pmatch, int eflags);
+013400000000      *
+013500000000      * where:
+013600000000      *       preg (input)  = the compiled regular expression
+013700000000      *                       (the output of regcomp())
+013800000000      *     string (input)  = string to run the RE upon
+013900000000      *     nmatch (input)  = the number of matches to return.
+014000000000      *     pmatch (output) = array of regmatch_t DS's
+014100000000      *                       showing what matches were found.
+014200000000      *     eflags (input)  = the sum of the flags (constants
+014300000000      *                       provided above) modifying the RE
+014400000000      *
+014500000000      * Returns 0 = success, otherwise an error number.
+014600000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+014700000000     D regexec         PR            10I 0 extproc('regexec')
+014800000000     D   preg                              likeds(regex_t) const
+014900000000     D   string                        *   value options(*string)
+015000000000     D   nmatch                      10U 0 value
+015100000000     D   pmatch                            likeds(regmatch_t) dim(100)
+015200000000     D                                     options(*varsize)
+015300000000     D   eflags                      10I 0 value
+015400000000
+015500000000
+015600000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+015700000000      * regerror() -- return error information from regcomp/regexec
+015800000000      *
+015900000000      *   size_t regerror(int errcode, const regex_t *preg,
+016000000000      *              char *errbuf, size_t errbuf_size);
+016100000000      *
+016200000000      *  where:
+016300000000      *    errcode (input)  = the error code to return info on
+016400000000      *                      (obtained as the return value from
+016500000000      *                      either regcomp() or regexec())
+016600000000      *       preg (input)  = the (compiled) RE to return the
+016700000000      *                      error for.
+016800000000      *     errbuf (output) = buffer containing human-readable
+016900000000      *                      error message.
+017000000000      * errbuf_size (input) = size of errbuf (max length of msg
+017100000000      *                      that will be returned)
+017200000000      *
+017300000000      * returns:  length of buffer needed to get entire error msg
+017400000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+017500000000     D regerror        PR            10U 0 extproc('regerror')
+017600000000     D   errcode                     10I 0 value
+017700000000     D   preg                              likeds(regex_t) const
+017800000000     D   errbuf                        *   value
+017900000000     D   errbuf_size                 10I 0 value
+018000000000
+018100000000
+018200000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+018300000000      * regfree() -- free memory locked by Regular Expression
+018400000000      *
+018500000000      *    void regfree(regex_t *preg);
+018600000000      *
+018700000000      *   where:
+018800000000      *        preg (input) = regular expression to free mem for.
+018900000000      *
+019000000000      *   NOTE:  regcomp() will always allocate extra memory
+019100000000      *        to be pointed to by the various pointers in
+019200000000      *        the regex_t structure.  If you don't call this,
+019300000000      *        that memory will never be returned to the system!
+019400000000      *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+019500000000     D regfree         PR                  extproc('regfree')
+019600000000     D   preg                              likeds(regex_t)

@@ -14,7 +14,7 @@
 000113120514     h dftactgrp(*NO)
 000114120514     h actgrp('QILE')
 000115120514     h option(*srcstmt)
-000116120522     h bnddir('CMDZBNDDIR':'CEXCEPBNDD')
+000116140310     h bnddir('CMDZBNDDIR')
 000117120514
 000118120625      /include qtoolstxt,ccodparms
 000119120521      /include qtoolstxt,cwrkfilgen
@@ -25,9 +25,9 @@
 000124120614      /include qtoolstxt,cqsyswrk
 000125120625      /include qtoolstxt,cwrklist
 000126120614      /include qtoolstxt,llist_h
-000127120521      /include csystsrc/qsrctxt,cexception
-000129120808      /include csystsrc/qsrctxt,cExcpTypes
-000130120808      /include csystsrc/qsrctxt,cExcpError
+000127140310      /include qtoolstxt,cexception
+000129140310      /include qtoolstxt,cExcpTypes
+000130140310      /include qtoolstxt,cExcpError
 000131120514
 000136120521      /////////////////////////////////////////////////////////////////
 000137120521      // Prototype declaration

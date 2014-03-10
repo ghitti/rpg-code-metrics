@@ -1,0 +1,28 @@
+000100120120
+000101120626      /if not defined(CREGEXP)
+000102120626      /define CREGEXP
+000103120120
+000104120120      /include comsrc/qsrctxt,regex_h
+000105120120
+000106120626     d CREGEXP_create...
+000107120626     d                 pr                  likeds(regex_T)
+000108120120     d  pattern                   32768a   value
+000109120120
+000110120626     d CREGEXP_isMatch...
+000111120626     d                 pr              n
+000112120120     d  dataToCompare             32768a   varying const
+000113120120     d  regularExp                         likeds(regex_T) value
+000114120120
+000116120626     d CREGEXP_destroy...
+000117120626     d                 pr
+000118120120     d  regularExp                         likeds(regex_T) value
+000119120120
+000120120628     d CREGEXP_convertCCSID...
+000122120628     d                 pr
+000123120628     d   inputBuffer                   *   const
+000124120628     d   outputBuffer                  *   const
+000125120628     d   fromCcsid                   10i 0 value
+000126120628     d   toCcsid                     10i 0 value
+000127120628     d   buffersLen                  10u 0 value
+000128120628
+000129120120      /endif
