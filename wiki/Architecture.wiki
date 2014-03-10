@@ -1,0 +1,1 @@
+https://code.google.com/p/rpg-code-metrics/svn/wiki/images/CodeMetricsComponentDiagram.png
