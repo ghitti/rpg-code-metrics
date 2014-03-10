@@ -1,0 +1,21 @@
+In order to successfully install *Code Metrics* in an _IBM i System_, please follow the next steps:
+
+== Step 1 ==
+
+== Step 2 ==
+
+== Step 3 ==
+
+== Step 4 ==
+Compile the installation CL program:
+
+`CHGCURLIB DESTINATION_LIB`
+
+`CRTBNDCL PGM(BUILDMETRI) SRCFILE(QTOOLS) SRCMBR(BUILDMETRI) REPLACE(*YES) OPTION(*EVENTF) DBGVIEW(*SOURCE)`
+
+== Step 5 ==
+Run the installation program specifying the destination library (where you want to create Code Metrics)
+
+`CALL BUILDMETRI DESTINATION_LIB`
+
+This command will compile all the required objects and tables.
