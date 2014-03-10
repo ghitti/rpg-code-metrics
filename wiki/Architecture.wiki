@@ -1,1 +1,1 @@
-https://code.google.com/p/rpg-code-metrics/svn/wiki/images/CodeMetricsComponentDiagram.png
+https://rpg-code-metrics.googlecode.com/svn/wiki/images/CodeMetricsComponentDiagram.PNG
