@@ -1,0 +1,290 @@
+000100091119      /if not defined(CEXCEPTION)
+000101091119      /define CEXCEPTION
+000102091119
+000103091119      //@@field:
+000104091119      //@name: exception
+000105091119      //@objective: define la estructura en la que se almacenan las
+000106091119      //            excepciones generadas
+000107091119      //@@
+000108091119     d exception_type  ds                  qualified based(ptrDummy)
+000109091119     d  messageId                     7a
+000110091119     d  messageFile                  20a
+000111091119     d   messageFileName...
+000112091119     d                               10a   overlay(messageFile)
+000113091119     d   messageFileLibrary...
+000114091119     d                               10a   overlay(messageFile:*Next)
+000115091119     d  messageText                 132a
+000116091119     d  messageData                3000a
+000117091119     d  jobName                      10a
+000118091119     d  jobNumber                     6a
+000119091119     d  userProfile                  10a
+000120091119     d  date                           d
+000121091119     d  time                           t
+000122091119     d  program                      10a
+000123091119     d  module                       10a
+000124091119     d  procedure                   255a
+000125091119     d  messageSeverity...
+000126091119     d                               10i 0
+000127091119     d  statementNumber...
+000128091119     d                               30a
+000129091119
+000130091119      //@@method:
+000131091119      //@name: CEXCEPTION_catchException...
+000132091119      //@description: obtiene datos de una excepcion producida
+000133091119      //@return: en caso de error devuelve *OFF
+000134091119      //@@
+000135091119     d CEXCEPTION_catchException...
+000136091119     d                 pr              n
+000137091119
+000138091119      //@@method:
+000139091119      //@name: CEXCEPTION_newException
+000140091119      //@description: Genera un nuevo program message de tipo *ESCAPE,
+000141091119      //              que cancela la entrada actual de la pila de llamadas
+000142091119      //              y puede ser capturado en un bloque monitor.
+000143091119      //
+000144091119      //@param: msgID      Identificador del mensaje
+000145091119      //@param: msgFile    Archivo de mensajes (sin calificar)
+000146091119      //@param: replaceVar Reemplazo para la variable de sustitucion
+000147091119      //                   incluida en la definicion del mensaje
+000148091119      //                   en el messageFile indicado
+000149091119      //@return: indica si se pudo genera la excepcion o no
+000150091119      //@@
+000151091119     d CEXCEPTION_throwNewException...
+000152091119     d                 pr              n
+000153091119     d msgID                         10a   const varying
+000154091119     d msgFile                       10a   const varying
+000155091119     d replaceVar                  3000a   const varying options(*nopass)
+000156091119
+000157100911      //@@method:
+000158100911      //@name: CEXCEPTION_getCurrentCallStack
+000159100911      //@description: obtiene la pila de llamadas en el momento en que se
+000160100911      //              invoca este procedimiento
+000161100911      //
+000162100911      //@paramin:  ptrEntryArray apuntador al arreglo en el que se almacenará
+000163100911      //                         la informacion de la pila de llamadas
+000164100911      //                         Debe ser de 100 entradas
+000165100911      //@paramout: arraySize     cantidad de entradas de arreglo
+000166100911      //@paramin:  skipEntries   cantidad de entradas que se ignorarán al inicio
+000167100911      //                         de la pila de llamadas. Por defecto 2.
+000168100911      //@return: indicador del estado de la operacion
+000169100911      //@@
+000170100911     d CEXCEPTION_getCurrentCallStack...
+000171100911     d                 pr              n
+000172100911     d ptrEntryArray                   *   const
+000173100911     d arraySize                     10i 0
+000174100911     d skipEntries                   10i 0 options(*nopass) value
+000175100911
+000176091119      //@@method:
+000177091119      //@name: CEXCEPTION_printStackTrace
+000178091119      //@description: escribe la pila de llamadas al momento en el que se
+000179091119      //              produjo la ultima excepcion
+000180091119      //
+000181091119      //@paramin: ptrHeaderPrinter apuntador al procedimiento que despliega
+000182091119      //                           el encabezado de la impresion de la pila.
+000183091119      //                           Debe cumplir con el siguiente prototipo:
+000184091119      //
+000185091119      //  d headerPrinter   pr
+000186091119      //  d  messageId                          like(exception_type.messageId)
+000187091119      //  d                                     const
+000188091119      //  d  messageText                        like(exception_type.messageText)
+000189091119      //  d                                     const
+000190091119      //  d  callStackSize                10i 0 const
+000191091119      //
+000192091119      //@paramin: ptrEntryPrinter  apuntador al procedimiento que despliega
+000193091119      //                           cada una de las entradas de la pila de
+000194091119      //                           llamadas. Debe cumplir el siguiente prototipo
+000195091119      //
+000196091119      //  d entryPrinter    pr
+000197091119      //  d  programName                  21a   varying const
+000198091119      //  d  moduleName                   21a   varying const
+000199091119      //  d  procedureName               255a   varying const
+000200091119      //  d  line                         30a   varying const
+000201091119      //
+000202091119      // @paramin: ptrFooterPrinter apuntador al procedimiento que finaliza la
+000203091119      //                            impresion de las entradas de la pila. Debe
+000204091119      //                            cumplir el siguiente prototipo:
+000205091119      //
+000206091119      //  d footerPrinter   pr
+000207091119      //@@
+000208091119     d CEXCEPTION_printStackTrace...
+000209091119     d                 pr
+000210091119     d ptrHeaderPrinter...
+000211091119     d                                 *   procptr const options(*nopass)
+000212091119     d ptrEntryPrinter...
+000213091119     d                                 *   procptr const options(*nopass)
+000214091119     d ptrFooterPrinter...
+000215091119     d                                 *   procptr const options(*nopass)
+000216091119
+000217091119      //@@method:
+000218091119      //@name: CEXCEPTION_getMessageId
+000219091119      //@description: obtiene el messageId de la excepcion
+000220091119      //@return: messageId de la excepcion
+000221091119      //@@
+000222091119     d CEXCEPTION_getMessageId...
+000223091119     d                 pr                  like(exception_type.messageId)
+000224091119
+000225091119      //@@method:
+000226091119      //@name: CEXCEPTION_getMessageFile
+000227091119      //@description: obtiene el messageFile de la excepcion
+000228091119      //@return: messageFile de la excepcion
+000229091119      //@@
+000230091119     d CEXCEPTION_getMessageFile...
+000231091119     d                 pr                  like(exception_type.messageFile)
+000232091119
+000233091119      //@@method:
+000234091119      //@name: CEXCEPTION_getMessageFileName
+000235091119      //@description: obtiene el valor de messageFileName de la excepcion
+000236091119      //@return: messageFileName de la excepcion
+000237091119      //@@
+000238091119     d CEXCEPTION_getMessageFileName...
+000239091119     d                 pr                  like(exception_type.messageFileName)
+000240091119
+000241091119      //@@method:
+000242091119      //@name: CEXCEPTION_getMessageFileLibrary
+000243091119      //@description: obtiene el valor de messageFileLibrary de la excepcion
+000244091119      //@return: messageFileLibrary de la excepcion
+000245091119      //@@
+000246091119     d CEXCEPTION_getMessageFileLibrary...
+000247091119     d                 pr                  like(exception_type.
+000248091119     d                                         messageFileLibrary)
+000249091119
+000250091119      //@@method:
+000251091119      //@name: CEXCEPTION_getMessageText
+000252091119      //@description: obtiene el valor de messageText de la excepcion
+000253091119      //@return: messageText de la excepcion
+000254091119      //@@
+000255091119     d CEXCEPTION_getMessageText...
+000256091119     d                 pr                  like(exception_type.messageText)
+000257091119
+000258091119      //@@method:
+000259091119      //@name: CEXCEPTION_getMessageText
+000260091119      //@description: obtiene el valor de messageText de la excepcion
+000261091119      //@return: messageText de la excepcion
+000262091119      //@@
+000263091119     d CEXCEPTION_getMessageData...
+000264091119     d                 pr                  like(exception_type.messageData)
+000265091119
+000266091119      //@@method:
+000267091119      //@name: CEXCEPTION_getJobName
+000268091119      //@description: obtiene el valor de jobName de la excepcion
+000269091119      //@return: jobName de la excepcion
+000270091119      //@@
+000271091119     d CEXCEPTION_getJobName...
+000272091119     d                 pr                  like(exception_type.jobName)
+000273091119
+000274091119      //@@method:
+000275091119      //@name: CEXCEPTION_getJobName
+000276091119      //@description: obtiene el valor de jobName de la excepcion
+000277091119      //@return: jobName de la excepcion
+000278091119      //@@
+000279091119     d CEXCEPTION_getJobNumber...
+000280091119     d                 pr                  like(exception_type.jobNumber)
+000281091119
+000282091119      //@@method:
+000283091119      //@name: CEXCEPTION_getUserProfile
+000284091119      //@description: obtiene el valor de userProfile de la excepcion
+000285091119      //@return: userProfile de la excepcion
+000286091119      //@@
+000287091119     d CEXCEPTION_getUserProfile...
+000288091119     d                 pr                  like(exception_type.userProfile)
+000289091119
+000290091119      //@@method:
+000291091119      //@name: CEXCEPTION_getDate
+000292091119      //@description: obtiene el valor de date de la excepcion
+000293091119      //@return: date de la excepcion
+000294091119      //@@
+000295091119     d CEXCEPTION_getDate...
+000296091119     d                 pr                  like(exception_type.date)
+000297091119
+000298091119      //@@method:
+000299091119      //@name: CEXCEPTION_getTime
+000300091119      //@description: obtiene el valor de time de la excepcion
+000301091119      //@return: time de la excepcion
+000302091119      //@@
+000303091119     d CEXCEPTION_getTime...
+000304091119     d                 pr                  like(exception_type.time)
+000305091119
+000306091119      //@@method:
+000307091119      //@name: CEXCEPTION_getProgram
+000308091119      //@description: obtiene el valor de program de la excepcion
+000309091119      //@return: program de la excepcion
+000310091119      //@@
+000311091119     d CEXCEPTION_getProgram...
+000312091119     d                 pr                  like(exception_type.program)
+000313091119
+000314091119      //@@method:
+000315091119      //@name: CEXCEPTION_getModule
+000316091119      //@description: obtiene el valor del module de la excepcion
+000317091119      //@return: module de la excepcion
+000318091119      //@@
+000319091119     d CEXCEPTION_getModule...
+000320091119     d                 pr                  like(exception_type.module)
+000321091119
+000322091119      //@@method:
+000323091119      //@name: CEXCEPTION_getProcedure
+000324091119      //@description: obtiene el valor de procedure de la excepcion
+000325091119      //@return: procedure de la excepcion
+000326091119      //@@
+000327091119     d CEXCEPTION_getProcedure...
+000328091119     d                 pr                  like(exception_type.procedure)
+000329091119
+000330091119      //@@method:
+000331091119      //@name: CEXCEPTION_getMessageSeverity...
+000332091119      //@description: obtiene el valor de messageSeverity de la excepcion
+000333091119      //@return: messageSeverity de la excepcion
+000334091119      //@@
+000335091119     d CEXCEPTION_getMessageSeverity...
+000336091119     d                 pr                  like(exception_type.messageSeverity)
+000337091119
+000338091119      //@@method:
+000339091119      //@name: CEXCEPTION_getStatementNumber
+000340091119      //@description: obtiene el valor de messageSeverity de la excepcion
+000341091119      //@return: StatementNumber de la excepcion
+000342091119      //@@
+000343091119     d CEXCEPTION_getStatementNumber...
+000344091119     d                 pr                  like(exception_type.statementNumber)
+000345091119
+000346091119      //@@method:
+000347091119      //@name: CEXCEPTION_jobPrintf
+000348091119      //@description: escribe una cadena de caracteres en el joblog
+000349091119      //@return: cantidad de bytes escritos en el joblog
+000350091119      //@@
+000351091119     d CEXCEPTION_jobPrintf...
+000352091119     d                 pr            10i 0
+000353091119     d  pMsg                           *   value options(*string)
+000354091119     d  pS1                            *   value options(*string : *nopass)
+000355091119     d  pS2                            *   value options(*string : *nopass)
+000356091119     d  pS3                            *   value options(*string : *nopass)
+000357091119     d  pS4                            *   value options(*string : *nopass)
+000358091119     d  pS5                            *   value options(*string : *nopass)
+000359091119     d  pS6                            *   value options(*string : *nopass)
+000360091119     d  pS7                            *   value options(*string : *nopass)
+000361091119     d  pS8                            *   value options(*string : *nopass)
+000362091119
+000363091119      //@@method:
+000364091119      //@name: CEXCEPTION_printException
+000365091119      //@description: despliega la ultima excepcion capturada
+000366091119      //@paramin: ptrExceptionPrinter apuntador al procedimiento que imprime
+000367091119      //                              la excepcion. Debe cumplir el prototipo:
+000368091119      //
+000369091119      // d exceptionPrinter...
+000370091119      // d                 pr                  extproc(ptrExceptionPrinterUsed)
+000371091119      // d messageId                      7a   const varying
+000372091119      // d messageFile                   20a   const varying
+000373091119      // d messageText                  132a   const varying
+000374091119      // d messageSev                    10a   const varying
+000375091119      // d program                       10a   const varying
+000376091119      // d module                        10a   const varying
+000377091119      // d procedure                    255a   const varying
+000378091119      // d statement                     30a   const varying
+000379091119      // d jobName                       10a   const varying
+000380091119      // d jobNumber                      6a   const varying
+000381091119      // d userProfile                   10a   const varying
+000382091119      // d date                          10a   const varying
+000383091119      // d time                          15a   const varying
+000384091119      //@@
+000385091119     d CEXCEPTION_printException...
+000386091119     d                 pr
+000387091119     d ptrExceptionPrinter...
+000388091119     d                                 *   procptr const options(*omit:*nopass)
+000389091119      /endif

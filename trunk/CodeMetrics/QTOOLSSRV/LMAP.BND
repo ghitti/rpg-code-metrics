@@ -1,0 +1,57 @@
+000000120529     /*
+000000120529       Copyright (c) 2008-2009 Mihael Schmidt
+000000120529       All rights reserved.
+000000120529
+000000120529       This file is part of the LMAP service program.
+000000120529
+000000120529       LMAP is free software: you can redistribute it and/or modify it under
+000000120529       the terms of the GNU Lesser General Public License as published by
+000000120529       the Free Software Foundation, either version 3 of the License, or
+000000120529       any later version.
+000000120529
+000000120529       LMAP is distributed in the hope that it will be useful,
+000000120529       but WITHOUT ANY WARRANTY; without even the implied warranty of
+000000120529       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+000000120529       GNU Lesser General Public License for more details.
+000000120529
+000000120529       You should have received a copy of the GNU Lesser General Public
+000000120529       License along with LMAP.  If not, see http://www.gnu.org/licenses/.
+000000120529      */
+000000120529
+000000120529STRPGMEXP PGMLVL(*CURRENT) SIGNATURE('Linked Map 1.0')
+000000120529    EXPORT SYMBOL('lmap_create')
+000000120529    EXPORT SYMBOL('lmap_dispose')
+000000120529    EXPORT SYMBOL('lmap_add')
+000000120529    EXPORT SYMBOL('lmap_addAll')
+000000120529    EXPORT SYMBOL('lmap_remove')
+000000120529    EXPORT SYMBOL('lmap_clear')
+000000120529    EXPORT SYMBOL('lmap_isEmpty')
+000000120529    EXPORT SYMBOL('lmap_get')
+000000120529    EXPORT SYMBOL('lmap_iterate')
+000000120529    EXPORT SYMBOL('lmap_abortIteration')
+000000120529    EXPORT SYMBOL('lmap_containsKey')
+000000120529    EXPORT SYMBOL('lmap_containsValue')
+000000120529    EXPORT SYMBOL('lmap_size')
+000000120529    EXPORT SYMBOL('lmap_addString')
+000000120529    EXPORT SYMBOL('lmap_addInteger')
+000000120529    EXPORT SYMBOL('lmap_addLong')
+000000120529    EXPORT SYMBOL('lmap_addDate')
+000000120529    EXPORT SYMBOL('lmap_addTime')
+000000120529    EXPORT SYMBOL('lmap_addTimestamp')
+000000120529    EXPORT SYMBOL('lmap_addFloat')
+000000120529    EXPORT SYMBOL('lmap_addDouble')
+000000120529    EXPORT SYMBOL('lmap_addDecimal')
+000000120529    EXPORT SYMBOL('lmap_addShort')
+000000120529    EXPORT SYMBOL('lmap_addBoolean')
+000000120529    EXPORT SYMBOL('lmap_getString')
+000000120529    EXPORT SYMBOL('lmap_getInteger')
+000000120529    EXPORT SYMBOL('lmap_getLong')
+000000120529    EXPORT SYMBOL('lmap_getDate')
+000000120529    EXPORT SYMBOL('lmap_getTime')
+000000120529    EXPORT SYMBOL('lmap_getTimestamp')
+000000120529    EXPORT SYMBOL('lmap_getFloat')
+000000120529    EXPORT SYMBOL('lmap_getDouble')
+000000120529    EXPORT SYMBOL('lmap_getDecimal')
+000000120529    EXPORT SYMBOL('lmap_getShort')
+000000120529    EXPORT SYMBOL('lmap_getBoolean')
+000000120529ENDPGMEXP

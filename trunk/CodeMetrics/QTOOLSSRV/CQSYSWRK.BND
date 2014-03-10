@@ -1,7 +1,3 @@
 000100120614             strpgmexp  pgmlvl(*current)
-000101120614                export     symbol(CQSYSWRK_getAllObjects)
-000102120614                export     symbol(CQSYSWRK_getAllSourceFiles)
-000103120616                export     symbol(CQSYSWRK_getAllMembers)
-000104120616                export     symbol(CQSYSWRK_getMemberInfo)
 000105120625                export     symbol(CQSYSWRK_convertDate)
 000106120614             endpgmexp

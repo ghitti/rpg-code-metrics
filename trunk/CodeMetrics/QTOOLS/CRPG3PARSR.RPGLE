@@ -11,7 +11,7 @@
 000111120628      * \rev    28-06-2012 Isaac Ramirez
 000112120628      */
 000113120525     h nomain
-000114120529     h bnddir('CMDZBNDDIR':'CEXCEPBNDD')
+000114140310     h bnddir('CMDZBNDDIR')
 000115120630     h option(*srcstmt)
 000116120525
 000117120525      /include qtoolstxt,cmdzntypes

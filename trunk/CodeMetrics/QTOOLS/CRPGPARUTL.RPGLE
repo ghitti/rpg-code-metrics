@@ -10,16 +10,16 @@
 000111120628      * \rev    22-05-2012 Isaac Ramirez
 000112120628      */
 000113120528     h nomain
-000114120531     h bnddir('CEXCEPBNDD':'CMDZBNDDIR')
+000114140310     h bnddir('CMDZBNDDIR')
 000115120630     h option(*srcstmt)
 000116120528
 000117120630      /include qtoolstxt,crpgparutl
 000118120528      /include qtoolstxt,cmdznconst
-000119120531      /include qhashtxt,lmap_h
+000119140310      /include qtoolstxt,lmap_h
 000120120630      /include qtoolstxt,cstringutl
-000121120630      /include csystsrc/qsrctxt,cexception
+000121140310      /include qtoolstxt,cexception
 000122120630      /include qtoolstxt,ccodstats
-000123120630      /include qlabtxt,cregexp
+000123140310      /include qtoolstxt,cregexp
 000124120528
 000125120628      /////////////////////////////////////////////////////////////////////
 000126120628      // Constants declarations

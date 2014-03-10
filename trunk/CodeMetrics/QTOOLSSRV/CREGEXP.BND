@@ -1,0 +1,6 @@
+000100120120             strpgmexp  pgmlvl(*current)
+000101120601                export     symbol(CREGEXP_create)
+000102120601                export     symbol(CREGEXP_isMatch)
+000103120601                export     symbol(CREGEXP_destroy)
+000104120628                export     symbol(CREGEXP_convertCCSID)
+000105120120             endpgmexp
