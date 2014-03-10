@@ -1,6 +1,8 @@
 In order to successfully install *Code Metrics* in an _IBM i System_, please follow the next steps:
 
 == Step 1 ==
+Do an SVN Checkout of the source code with the following command:
+
 
 == Step 2 ==
 
