@@ -1,5 +1,5 @@
  * [Welcome Introduction]
- * * [Underlying components]
+ * * [Architecture Underlying components]
  * Pre-requisites
    * [InstallationGuide How to install]
  * [HowToUse Using Code Metrics] 
