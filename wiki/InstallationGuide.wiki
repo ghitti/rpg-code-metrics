@@ -7,6 +7,8 @@ Do an _SVN Checkout_ of the source code with the following command:
 svn checkout http://rpg-code-metrics.googlecode.com/svn/trunk/ rpg-code-metrics-read-only
 }}}
 
+This step requires that you install an SVN client on your PC, like _tortoiseSVN_ or similar.
+
 == Step 2 ==
 
 == Step 3 ==
