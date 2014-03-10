@@ -1,8 +1,11 @@
 In order to successfully install *Code Metrics* in an _IBM i System_, please follow the next steps:
 
 == Step 1 ==
-Do an SVN Checkout of the source code with the following command:
+Do an _SVN Checkout_ of the source code with the following command:
 
+{{{
+svn checkout http://rpg-code-metrics.googlecode.com/svn/trunk/ rpg-code-metrics-read-only
+}}}
 
 == Step 2 ==
 
@@ -11,13 +14,19 @@ Do an SVN Checkout of the source code with the following command:
 == Step 4 ==
 Compile the installation CL program:
 
-`CHGCURLIB DESTINATION_LIB`
+{{{
+CHGCURLIB DESTINATION_LIB
+}}}
 
-`CRTBNDCL PGM(BUILDMETRI) SRCFILE(QTOOLS) SRCMBR(BUILDMETRI) REPLACE(*YES) OPTION(*EVENTF) DBGVIEW(*SOURCE)`
+{{{
+CRTBNDCL PGM(BUILDMETRI) SRCFILE(QTOOLS) SRCMBR(BUILDMETRI) REPLACE(*YES) OPTION(*EVENTF) DBGVIEW(*SOURCE)
+}}}
 
 == Step 5 ==
 Run the installation program specifying the destination library (where you want to create Code Metrics)
 
-`CALL BUILDMETRI DESTINATION_LIB`
+{{{
+CALL BUILDMETRI DESTINATION_LIB
+}}}
 
 This command will compile all the required objects and tables.
