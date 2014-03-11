@@ -16,6 +16,6 @@ Code metrics can be executed with the command {{{CODMETRICS}}}
  * *Source file member*: indicates the name of the member to be processed by _Code Metrics_. If the option *`*`ALL* is specified, _Code Metrics_ process all the source member of the _Source File_ specified.
  * *Output files library*: specifies the name of the library where the output files are generated
  * *Update or replace outfile*: specifies the action to be taken with the existing data in the _Output files library_
-   * `*`REPLACE:
-   * `*`UPDATE:
- * *Outfile preffix*:
+   * `*`REPLACE: all the existing data will be deleted and replace with the last execution
+   * `*`UPDATE: all the existing data will be syncronized, meaning that any missing file will be remove from the output file and only changed member since the last execution will be re-calculated. 
+ * *Outfile preffix*: four letter preffix for the output files
