@@ -1,0 +1,21 @@
+Code metrics can be executed with the command {{{CODMETRICS}}}
+
+=Command definition=
+
+<pre>
+    Source file  . . . . . . . . . .                 Name, *ALL      
+      Library  . . . . . . . . . . .                 Nombre, *CURLIB 
+    Source file member . . . . . . .                 Name, *ALL      
+    Output files library . . . . . .   *CURLIB       *CURLIB, Name   
+    Update or replace outfile  . . .   *UPDATE                       
+    Outfile preffix  . . . . . . . .   *DFT          *DFT, Preffix   
+</pre>
+
+ * *Source file*: name of the source file to be processed by _Code Metrics_. If the option *`*`ALL* is specified, _Code Metrics_ process all the source files available.
+ * *Library*: name of the library where the source file is located
+ * *Source file member*: indicates the name of the member to be processed by _Code Metrics_. If the option *`*`ALL* is specified, _Code Metrics_ process all the source member of the _Source File_ specified.
+ * *Output files library*: specifies the name of the library where the output files are generated
+ * *Update or replace outfile*: specifies the action to be taken with the existing data in the _Output files library_
+   * `*`REPLACE:
+   * `*`UPDATE:
+ * *Outfile preffix*:
