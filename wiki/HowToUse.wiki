@@ -26,16 +26,22 @@ In order to use _Code Metrics_ follow the next steps
 == Step 1 ==
 Make sure to have the library where you installed _Code Metrics_ in your library list
 
-{{{ADDLIBLE DESTINATION_LIB}}}
+{{{
+ADDLIBLE DESTINATION_LIB
+}}}
 
 or 
 
-{{{CHGCURLIB DESTINATION_LIB}}}
+{{{
+CHGCURLIB DESTINATION_LIB
+}}}
 
 == Step 2 ==
 Execute {{{CODMETRICS}}} command specifying the parameters accordingly. For example:
 
-{{{CODMETRICS SOURCE(TEST/*ALL) MEMBER(*ALL) OPTION(*REPLACE) PREFFIX(*DFT)}}}
+{{{
+CODMETRICS SOURCE(TEST/*ALL) MEMBER(*ALL) OPTION(*REPLACE) PREFFIX(*DFT)
+}}}
 
 == Step 3 ==
 Check the generated files:
