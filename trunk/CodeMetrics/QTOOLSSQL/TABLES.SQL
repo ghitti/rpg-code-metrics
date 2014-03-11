@@ -7,9 +7,9 @@ CREATE TABLE QTEMP/WORKLIST AS (
            FILES.ATFILE   AS FILENAME,                      
            MEMBERS.MLNAME AS MEMBERNAME,                  
            MEMBERS.MLSEU2 AS SOURCETYPE,                  
-           MEMBERS.MLCHGC || MEMBERS.MLCHGD ||            
-           MEMBERS.MLCHGC || MEMBERS.MLCHGD ||            
-           MEMBERS.MLCHGT AS CHANGEDATETIME               
+           MEMBERS.MLCHGC || MEMBERS.MLCHGD ||          
+               MEMBERS.MLCHGT AS CHANGEDATETIME,          
+           MEMBERS.MLCCEN || MEMBERS.MLCDAT AS CREATIONDATE                          
       FROM QTEMP/FILES INNER JOIN QTEMP/MEMBERS  
         ON FILES.ATFILE = MEMBERS.MLFILE       
        AND FILES.ATLIB = MEMBERS.MLLIB                 
