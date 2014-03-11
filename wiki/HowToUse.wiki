@@ -19,3 +19,10 @@ Code metrics can be executed with the command {{{CODMETRICS}}}
    * `*`REPLACE: all the existing data will be deleted and replace with the last execution
    * `*`UPDATE: all the existing data will be syncronized, meaning that any missing file will be remove from the output file and only changed member since the last execution will be re-calculated. 
  * *Outfile preffix*: four letter preffix for the output files
+
+=How to use=
+In order to use _Code Metrics_ follow the next steps
+
+== Step 1 ==
+== Step 3 ==
+== Step 3 ==
